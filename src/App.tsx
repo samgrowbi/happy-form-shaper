@@ -27,15 +27,23 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<InstantLift />} />
-          <Route path="/instant-lift" element={<Navigate to="/" replace />} />
+          {/* Homepage renders the LED (Non-Surgical Face & Neck Lift) treatment */}
+          <Route path="/" element={<Index />} />
           <Route path="/led" element={<Index />} />
+          <Route path="/instant-lift" element={<InstantLift />} />
           <Route path="/led-cryo" element={<LedCryo />} />
-          <Route path="/body-sculpting" element={<BodySculpting />} />
-          <Route path="/book/led" element={<BookLed />} />
+          {/* Body Sculpting renamed to EMS */}
+          <Route path="/ems" element={<BodySculpting />} />
+          <Route path="/body-sculpting" element={<Navigate to="/ems" replace />} />
+
+          {/* Booking routes - /book is the primary LED booking page */}
+          <Route path="/book" element={<BookLed />} />
+          <Route path="/book/led" element={<Navigate to="/book" replace />} />
           <Route path="/book/instant-lift" element={<BookInstantLift />} />
           <Route path="/book/led-cryo" element={<BookLedCryo />} />
-          <Route path="/book/body-sculpting" element={<BookBodySculpting />} />
+          <Route path="/book/ems" element={<BookBodySculpting />} />
+          <Route path="/book/body-sculpting" element={<Navigate to="/book/ems" replace />} />
+
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/auth" element={<Auth />} />
           <Route path="/admin" element={<Admin />} />
