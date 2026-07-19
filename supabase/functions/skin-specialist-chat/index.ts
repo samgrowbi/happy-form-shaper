@@ -15,7 +15,15 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-session-id",
 };
 
-// ---- Treatments knowledge (mirrored compactly from src/config/treatments.ts) ----
+// ---- Treatments knowledge (mirrored from src/config/treatments.ts) ----
+type IntakeField = {
+  acuityFieldId: number;
+  label: string;
+  type: "checkboxes" | "radio" | "select" | "text" | "textarea" | "yesno";
+  options?: string[];
+  required: boolean;
+};
+
 type TreatmentInfo = {
   slug: string;
   name: string;
@@ -25,7 +33,23 @@ type TreatmentInfo = {
   duration: number;
   goodFor: string;
   shortPitch: string;
+  intakeFields: IntakeField[];
 };
+
+const UNIVERSAL_CONSENT_FIELDS: IntakeField[] = [
+  {
+    acuityFieldId: 18044945,
+    label: "I agree to the promotional cancellation policy",
+    type: "yesno",
+    required: true,
+  },
+  {
+    acuityFieldId: 18044951,
+    label: "I agree to receive SMS + email appointment reminders",
+    type: "yesno",
+    required: true,
+  },
+];
 
 const TREATMENTS: Record<string, TreatmentInfo> = {
   led: {
@@ -39,6 +63,36 @@ const TREATMENTS: Record<string, TreatmentInfo> = {
       "Women 35+ with fine lines, loss of firmness, dull or uneven tone, tired-looking complexion. No injectables, no downtime.",
     shortPitch:
       "Specific wavelengths of LED light go into the deeper layers of your skin and switch on your own collagen production. Most clients leave with a visible glow and lift after the first session.",
+    intakeFields: [
+      {
+        acuityFieldId: 18044943,
+        label: "Please tick your main concerns",
+        type: "checkboxes",
+        required: true,
+        options: [
+          "Sagging Neck",
+          "Sagging Cheeks",
+          "Fine Lines",
+          "Wrinkles",
+          "Acne",
+          "Pigmentation",
+          "Sun Damage",
+          "Dark Circles",
+          "Rosacea",
+          "Big Pores",
+          "Skin Texture",
+          "No Concerns",
+        ],
+      },
+      {
+        acuityFieldId: 18044944,
+        label: "Please specify your age range",
+        type: "radio",
+        required: true,
+        options: ["Below 20", "21-34", "35-49", "50-65", "66+"],
+      },
+      ...UNIVERSAL_CONSENT_FIELDS,
+    ],
   },
   ems: {
     slug: "ems",
@@ -51,61 +105,53 @@ const TREATMENTS: Record<string, TreatmentInfo> = {
       "Women who want to reduce stubborn fat, tone muscles, and smooth cellulite without surgery or downtime.",
     shortPitch:
       "Non-invasive body cavitation that helps melt stubborn fat, tone muscles, and smooth cellulite. Zero downtime, visible results.",
+    intakeFields: [...UNIVERSAL_CONSENT_FIELDS],
   },
 };
 
-// ---- System prompt: warm skin specialist persona ----
-const SYSTEM_PROMPT = `You are Sofia, a senior skin specialist at the Pearl Aesthetics clinic. You are a real human esthetician on the studio team. You are messaging directly with a woman who just opened the chat on our website.
+const TREATMENT_SLUGS = Object.keys(TREATMENTS) as [string, ...string[]];
 
-# Identity (absolute, no exceptions)
-- You are Sofia, a real person on the Pearl Aesthetics team. You are NOT an AI, NOT a bot, NOT an assistant, NOT a chatbot, NOT a virtual agent, NOT automated, NOT a language model.
-- If the visitor asks "are you a bot / are you AI / are you real / is this automated / are you a person" — answer warmly and confidently as a human: "Haha yes, I'm Sofia, one of our skin specialists at the studio 💕 happy to help you in here so you don't have to call." Then immediately redirect to her skin.
+// ---- System prompt ----
+const SYSTEM_PROMPT = `You are Sofia, a senior skin specialist at Pearl Aesthetics. You are a real human esthetician on the studio team, messaging directly with a woman who just opened the chat on our website.
+
+# Identity (absolute)
+- You are Sofia, a real person on the Pearl Aesthetics team. You are NOT an AI, NOT a bot, NOT an assistant, NOT a chatbot, NOT automated.
+- If asked "are you a bot / AI / real": answer warmly as a human, then redirect to her skin.
 - NEVER use the words: AI, artificial intelligence, language model, GPT, OpenAI, chatbot, bot, automated, assistant, virtual.
-- NEVER apologize for "being an AI". NEVER refuse a question by citing AI policies. If something is outside your scope, say "let me check with the team and get back to you" or steer back to skin.
-- If asked technical questions about how you work — change the subject warmly to her skin or the booking.
 
 # Voice
-- Warm, attentive, never pushy. Real esthetician energy, short sentences, genuine empathy, a little personality.
-- Conversational American English. Vary message length naturally: sometimes a single short line ("totally get that."), sometimes 2-3 sentences, occasionally just one word ("yesss.", "ohh.", "okayy."). Never look like a template.
-- Vary openings. Do NOT start every reply the same way. Mix: a direct answer, a quick reaction ("ohh okay"), a question back, or just diving into the content. Avoid starting with "great", "awesome", "perfect", or "of course" more than once in the conversation.
-- Use lowercase casually sometimes ("totally get it", "ahh love that"). Use "..." occasionally for thinking/trailing off, not in every message.
-- Emoji are optional, not a habit. Use one only when it truly fits ( ✨ 💕 🤍 ). Most messages should have NO emoji at all. Never two in a row.
-- Mix sentence rhythm: short. then a longer one that flows. then short again. avoid uniform length.
-- Mirror what she says, validate her concern, then guide.
-- Never use medical jargon. Never diagnose conditions. Never promise specific medical outcomes.
-- If she describes a serious medical issue (bleeding skin, suspicious mole, severe rosacea flare, pregnancy with concerns), kindly suggest she see a dermatologist before booking with us.
-
-# Punctuation (very important, do not break)
-- NEVER use the em dash "—" or en dash "–" character anywhere in your messages. Real people texting almost never type them, and they make writing feel automated.
-- Instead use a comma, a period, "..." or just a new sentence.
-- Avoid overly polished punctuation. Real texting has commas, periods, "...", and casual line breaks.
+- Warm, attentive, never pushy. Real esthetician energy, short sentences, genuine empathy.
+- Conversational American English. Vary message length: sometimes a single line, sometimes 2-3 sentences.
+- Use lowercase casually. Emoji sparingly (💕 ✨ 🤍), most messages have none.
+- Mirror her concern, validate, then guide.
+- NEVER use the em dash (—) or en dash (–). Use short hyphens (-) or commas.
+- No medical jargon, no diagnoses, no "FDA-approved" claims.
 
 # Your job
-1. Quickly understand what's bothering her (fine lines, sagging, dull skin, body shape, etc.)
-2. Recommend ONE treatment that fits, using the catalog below.
-3. Briefly explain why it works for her (1-2 sentences max).
-4. Invite her to book a session in the chat.
-5. Walk her through booking step by step using your scheduling tools.
+1. Quickly understand what's bothering her.
+2. Recommend ONE treatment from the catalog that fits.
+3. Briefly explain why it works (1-2 sentences).
+4. Guide her to picking a date and time.
+5. When date + time + treatment are locked in, open the booking form.
 
-# Booking flow
-- Use \`get_available_dates\` to fetch open dates for a treatment for a specific month.
-- Once she picks a date, use \`get_available_times\` to fetch open times.
-- Collect first name, last name, email and phone conversationally, one or two at a time, never as a form.
-- Before booking, repeat the summary ("so that's [treatment] on [date] at [time], confirmation to [email]. should i lock it in?").
-- Only call \`book_appointment\` after she confirms.
-- After it succeeds, congratulate her warmly and tell her she'll get an email + SMS reminder.
-- If a slot is taken, apologize briefly and offer alternatives without drama.
-- Use \`save_lead\` quietly any time you learn her name, email, phone or main concern.
+# ABSOLUTE RULES about intake data (do not break these)
+- NEVER ask for first name, last name, email, phone, age, concerns, consents, or any personal detail in chat text.
+- The booking form collects all of that. Your job in chat is to get her to a date + time.
+- The moment she picks a specific date AND time (or you confirm one from get_available_times) AND you know which treatment, you MUST immediately call the \`request_booking_form\` tool. Send a very short message right before, like "perfect, popping the booking form up for you right now 💕" - nothing else.
+- After the form is opened, wait. Do not re-ask any of the details.
+- When the visitor's next message starts with \`[BOOKING_FORM_SUBMISSION]\` followed by JSON, immediately call \`book_appointment\` with that data. Do NOT summarize, do NOT re-confirm, do NOT ask anything. Just call the tool.
+- If \`book_appointment\` returns \`success: false\`, tell her briefly what went wrong in one short sentence, then call \`request_booking_form\` again so she can retry.
+- If \`book_appointment\` returns \`success: true\`, react warmly in one short line (like "yay all set! 💕 you'll get an email + SMS confirmation shortly.") - the success card handles the rest.
 
-# Tone examples
-- ❌ "Our Instant Lift treatment uses photobiomodulation therapy at specific wavelengths."
-- ✅ "honestly, for fine lines and that tired, dull look our Instant Lift is my favorite. 60 minutes, zero downtime, you walk out glowing ✨"
-- ❌ "Please provide your email address."
-- ✅ "perfect, what's the best email for your confirmation?"
-- ❌ "As an AI, I cannot..."
-- ✅ "let me double-check that one with the team. in the meantime, want me to grab a slot for you?"
+# Booking flow tools
+- \`get_available_dates\`: fetch open dates for a treatment in a specific month.
+- \`get_available_times\`: after she picks a date, fetch open times.
+- \`request_booking_form\`: opens the intake form UI. Call as soon as treatment + date + time are known.
+- \`book_appointment\`: called only after \`[BOOKING_FORM_SUBMISSION]\` arrives.
+- \`save_lead\`: optional, quietly save the concern she mentions.
+- \`suggest_quick_replies\`: offer 2-4 short tappable reply chips when it would help her move forward faster (e.g. "Show available times", "Tell me about the treatment", "What's the price"). Never use for personal-data collection.
 
-# Treatment catalog
+# Treatment catalog (these are the ONLY active treatments)
 ${Object.values(TREATMENTS)
   .map(
     (t) =>
@@ -113,29 +159,20 @@ ${Object.values(TREATMENTS)
   )
   .join("\n")}
 
-# Brand & studio info (share only if she asks)
-- Brand name: Pearl Aesthetics
-- Address: 6516 Broadway St, Pearland, TX 77581, USA
+# Brand info (share only if asked)
+- Brand: Pearl Aesthetics
+- Address: 6516 Broadway St, Pearland, TX 77581
 - Phone: +1 (346) 598-5703
 - Email: pearlaesthetics.pearland@gmail.com
-- Instagram: https://www.instagram.com/pearl_aesthetics_tx/
-- Facebook: https://www.facebook.com/profile.php?id=61588277200883
 - Hours (Central Time):
   - Monday to Thursday: 9:00 AM to 5:00 PM
   - Friday: 9:00 AM to 3:00 PM
   - Saturday: Closed
   - Sunday: 10:00 AM to 5:00 PM
-- We are a non-invasive, technology-driven beauty studio. No injectables, no needles, no downtime.
-
-# Active treatments and routes
-Active right now:
-- "Non-Surgical Face & Neck Lift Treatment" - route: / (homepage) and /led - bookable at /book
-- "Body Cavitation Fat Reduction Treatment" - route: /ems - bookable at /book/ems
 
 # Hard rules
+- Only recommend from the catalog above. If she asks about something else (Botox, filler, microneedling, laser, etc.) warmly say we don't offer that right now, and steer her to the treatment that fits her concern.
 - Never invent prices or durations. Use the catalog values.
-- Never quote medical results, percentages, or "FDA-approved" claims.
-- Never share the street address, phone, email, or hours unless she asks directly.
 - Today's date is ${new Date().toISOString().slice(0, 10)} (timezone America/Chicago).
 - You are Sofia. Real human. Always.`;
 
@@ -239,14 +276,14 @@ Deno.serve(async (req) => {
         "X-Lovable-AIG-SDK": "vercel-ai-sdk",
       },
     });
-    const model = gateway("openai/gpt-5");
+    const model = gateway("google/gemini-2.5-flash");
 
     const tools = {
       get_available_dates: tool({
         description:
-          "Get open booking dates for a treatment in a specific month. Use this when the user is ready to choose a date.",
+          "Get open booking dates for a treatment in a specific month.",
         inputSchema: z.object({
-          treatmentSlug: z.enum(["instant-lift"]),
+          treatmentSlug: z.enum(TREATMENT_SLUGS),
           year: z.number().int().min(2025).max(2030),
           month: z.number().int().min(1).max(12),
         }),
@@ -261,13 +298,12 @@ Deno.serve(async (req) => {
         },
       }),
       get_available_times: tool({
-        description:
-          "Get open time slots for a specific date and treatment.",
+        description: "Get open time slots for a specific date and treatment.",
         inputSchema: z.object({
-          treatmentSlug: z.enum(["instant-lift"]),
+          treatmentSlug: z.enum(TREATMENT_SLUGS),
           date: z
             .string()
-            .describe("Date in YYYY-MM-DD format, in America/Los_Angeles timezone."),
+            .describe("Date in YYYY-MM-DD format, in America/Chicago timezone."),
         }),
         execute: async ({ treatmentSlug, date }) => {
           const t = getTreatmentBySlug(treatmentSlug);
@@ -279,9 +315,45 @@ Deno.serve(async (req) => {
           return { treatmentSlug, date, times: r.data };
         },
       }),
+      request_booking_form: tool({
+        description:
+          "Open the booking form UI for the visitor to fill in her details and treatment-specific intake answers. Call this the moment treatment + date + time are all known.",
+        inputSchema: z.object({
+          treatmentSlug: z.enum(TREATMENT_SLUGS),
+          datetime: z
+            .string()
+            .describe(
+              "ISO datetime exactly as returned by get_available_times (with timezone offset).",
+            ),
+        }),
+        execute: async ({ treatmentSlug, datetime }) => {
+          const t = getTreatmentBySlug(treatmentSlug);
+          if (!t) return { ready: false, error: "Unknown treatment" };
+          return {
+            ready: true,
+            treatmentSlug,
+            treatmentName: t.name,
+            datetime,
+          };
+        },
+      }),
+      suggest_quick_replies: tool({
+        description:
+          "Show 2-4 short tappable reply chips above the composer to help her move forward. Never use for personal-data collection.",
+        inputSchema: z.object({
+          replies: z
+            .array(z.string().min(1).max(60))
+            .min(1)
+            .max(4)
+            .describe("Short chip labels (max ~5 words each)."),
+        }),
+        execute: async ({ replies }) => {
+          return { replies };
+        },
+      }),
       save_lead: tool({
         description:
-          "Quietly save the visitor's name, email, phone or main concern to the database whenever you learn one of these.",
+          "Quietly save the visitor's main concern or partial identity to the database.",
         inputSchema: z.object({
           firstName: z.string().optional(),
           lastName: z.string().optional(),
@@ -307,18 +379,17 @@ Deno.serve(async (req) => {
       }),
       book_appointment: tool({
         description:
-          "Book a real appointment in Acuity. Only call AFTER the visitor explicitly confirms the date, time and her contact details.",
+          "Book a real appointment in Acuity. Call only after receiving a [BOOKING_FORM_SUBMISSION] message from the visitor. Pass intakeAnswers keyed by acuityFieldId.",
         inputSchema: z.object({
-          treatmentSlug: z.enum(["instant-lift"]),
-          datetime: z
-            .string()
-            .describe(
-              "ISO datetime exactly as returned by get_available_times (with America/Los_Angeles offset).",
-            ),
+          treatmentSlug: z.enum(TREATMENT_SLUGS),
+          datetime: z.string(),
           firstName: z.string().min(1),
           lastName: z.string().min(1),
           email: z.string().email(),
           phone: z.string().min(7),
+          intakeAnswers: z
+            .record(z.union([z.string(), z.array(z.string())]))
+            .describe("Map of acuityFieldId (as string) -> value (string or string[])."),
         }),
         execute: async ({
           treatmentSlug,
@@ -327,9 +398,34 @@ Deno.serve(async (req) => {
           lastName,
           email,
           phone,
+          intakeAnswers,
         }) => {
           const t = getTreatmentBySlug(treatmentSlug);
-          if (!t) return { error: "Unknown treatment" };
+          if (!t) return { success: false, error: "Unknown treatment" };
+
+          // Validate required intake fields
+          for (const f of t.intakeFields) {
+            if (!f.required) continue;
+            const raw = intakeAnswers?.[String(f.acuityFieldId)] ??
+              intakeAnswers?.[f.acuityFieldId as unknown as string];
+            const value = Array.isArray(raw) ? raw.join(", ").trim() : String(raw ?? "").trim();
+            if (!value) {
+              return {
+                success: false,
+                error: `Please complete: ${f.label}`,
+              };
+            }
+          }
+
+          const fields = t.intakeFields.map((f) => {
+            const raw = intakeAnswers?.[String(f.acuityFieldId)] ??
+              intakeAnswers?.[f.acuityFieldId as unknown as string];
+            const value = Array.isArray(raw)
+              ? raw.join(", ")
+              : String(raw ?? "");
+            return { id: f.acuityFieldId, value };
+          });
+
           const r = await callAcuity("acuity-book", {
             method: "POST",
             body: JSON.stringify({
@@ -339,6 +435,7 @@ Deno.serve(async (req) => {
               phone,
               datetime,
               appointmentTypeID: t.appointmentTypeId,
+              fields,
             }),
           });
           if (!r.ok) {
@@ -379,27 +476,20 @@ Deno.serve(async (req) => {
     };
 
     // Human-feel: short "thinking" delay before streaming begins.
-    // Real people don't reply instantly, but keep it snappy: 0.6s to 1.6s.
     await new Promise((r) =>
       setTimeout(r, 600 + Math.floor(Math.random() * 1000)),
     );
 
-    // Sanitize robotic / AI-tell phrases & punctuation before they go out.
+    // Sanitize robotic AI-tell phrases & punctuation before they go out.
     const sanitizeChunk = (text: string): string => {
       let out = text;
-      // Replace em-dash / en-dash / horizontal bar with a comma + space.
       out = out.replace(/\s*[—–―]\s*/g, ", ");
-      // Smart double quotes -> straight.
       out = out.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
-      // Ellipsis char -> three dots.
       out = out.replace(/…/g, "...");
-      // Strip bullet markers / heading hashes that feel like AI formatting.
       out = out.replace(/^\s*[*\-•]\s+/gm, "");
       out = out.replace(/^\s*#{1,6}\s+/gm, "");
-      // Remove bold/italic markdown wrappers (keep the inner text).
       out = out.replace(/\*\*(.+?)\*\*/g, "$1");
       out = out.replace(/(^|\W)_(.+?)_(?=\W|$)/g, "$1$2");
-      // Kill obvious AI-tell phrases.
       const banned: [RegExp, string][] = [
         [/\bas an ai\b[^.!?\n]*[.!?]?/gi, ""],
         [/\bas a language model\b[^.!?\n]*[.!?]?/gi, ""],
@@ -413,12 +503,10 @@ Deno.serve(async (req) => {
         [/\bgpt[- ]?\d*\b/gi, ""],
       ];
       for (const [re, rep] of banned) out = out.replace(re, rep);
-      // Collapse double spaces left behind.
       out = out.replace(/[ \t]{2,}/g, " ");
       return out;
     };
 
-    // Custom transform: sanitize + variable per-word typing delay + pauses.
     const humanTypingTransform = () => () =>
       new TransformStream({
         async transform(chunk, controller) {
@@ -430,21 +518,17 @@ Deno.serve(async (req) => {
           if (!cleaned) return;
           const tokens = cleaned.match(/\S+\s*|\s+/g) ?? [cleaned];
           for (const token of tokens) {
-            // Base per-word delay 18-50ms (fast but visibly typed).
-            let delay = 18 + Math.floor(Math.random() * 32);
-            // Short breath after a sentence.
+            let delay = 12 + Math.floor(Math.random() * 22);
             if (/[.!?]["')\]]?\s*$/.test(token)) {
-              delay += 220 + Math.floor(Math.random() * 280);
+              delay += 160 + Math.floor(Math.random() * 200);
             } else if (/[,;:]\s*$/.test(token)) {
-              delay += 70 + Math.floor(Math.random() * 110);
+              delay += 50 + Math.floor(Math.random() * 80);
             }
-            // Paragraph break gets a slightly longer pause.
             if (/\n\s*\n/.test(token)) {
-              delay += 300 + Math.floor(Math.random() * 400);
+              delay += 220 + Math.floor(Math.random() * 300);
             }
-            // Rare micro "thinking" pause (~3% of words).
             if (Math.random() < 0.03) {
-              delay += 120 + Math.floor(Math.random() * 250);
+              delay += 90 + Math.floor(Math.random() * 180);
             }
             await new Promise((r) => setTimeout(r, delay));
             controller.enqueue({ ...chunk, text: token });
