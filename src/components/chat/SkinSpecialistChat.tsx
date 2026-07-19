@@ -125,7 +125,7 @@ function FloatingBubble({
     <button
       onClick={onClick}
       aria-label="Chat with Sofia, our skin specialist"
-      className="fixed z-[60] bottom-24 right-5 md:bottom-6 md:right-6 group flex items-center gap-3 rounded-full bg-white border border-pink-200 shadow-2xl transition-all hover:scale-105 hover:shadow-pink-200/60 pl-1.5 pr-4 py-1.5 md:py-2"
+      className="fixed z-[60] bottom-24 right-5 md:bottom-6 md:right-6 group flex items-center gap-3 rounded-full bg-white border border-blue-200 shadow-2xl transition-all hover:scale-105 hover:shadow-blue-200/60 pl-1.5 pr-4 py-1.5 md:py-2"
     >
       <span className="relative h-12 w-12 md:h-14 md:w-14 shrink-0">
         <img
@@ -134,7 +134,7 @@ function FloatingBubble({
           width={112}
           height={112}
           loading="lazy"
-          className="h-full w-full rounded-full object-cover ring-2 ring-pink-100"
+          className="h-full w-full rounded-full object-cover ring-2 ring-blue-100"
         />
         <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-emerald-500 ring-2 ring-white" />
       </span>
@@ -233,8 +233,8 @@ function ChatWindow({
   const activeQuickReplies = suggestedReplies ?? (showDefaultQuickReplies ? DEFAULT_QUICK_REPLIES : null);
 
   return (
-    <div className="fixed inset-0 md:inset-auto md:bottom-6 md:right-6 z-[70] md:w-[400px] md:h-[640px] md:max-h-[85vh] flex flex-col bg-white md:rounded-3xl shadow-2xl overflow-hidden border border-pink-100">
-      <div className="flex items-center gap-3 px-5 py-4 bg-gradient-to-br from-pink-500 to-pink-600 text-white">
+    <div className="fixed inset-0 md:inset-auto md:bottom-6 md:right-6 z-[70] md:w-[400px] md:h-[640px] md:max-h-[85vh] flex flex-col bg-white md:rounded-3xl shadow-2xl overflow-hidden border border-blue-100">
+      <div className="flex items-center gap-3 px-5 py-4 bg-gradient-to-br from-blue-500 to-blue-600 text-white">
         <div className="relative h-11 w-11 shrink-0">
           <img
             src={specialistAvatar}
@@ -243,7 +243,7 @@ function ChatWindow({
             height={88}
             className="h-11 w-11 rounded-full object-cover ring-2 ring-white/30"
           />
-          <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-emerald-400 ring-2 ring-pink-500" />
+          <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full bg-emerald-400 ring-2 ring-blue-500" />
         </div>
         <div className="flex-1 min-w-0 leading-tight">
           <div className="font-medium text-[15px]">Sofia · Skin Specialist</div>
@@ -262,7 +262,7 @@ function ChatWindow({
 
       <div
         ref={scrollRef}
-        className="flex-1 overflow-y-auto px-4 py-5 space-y-4 bg-pink-50/40"
+        className="flex-1 overflow-y-auto px-4 py-5 space-y-4 bg-blue-50/40"
       >
         {messages.map((m) => (
           <MessageBubble
@@ -281,12 +281,12 @@ function ChatWindow({
       </div>
 
       {activeQuickReplies && !isLoading && (
-        <div className="px-3 pt-2 pb-1 flex flex-wrap gap-2 border-t border-pink-100 bg-white/70">
+        <div className="px-3 pt-2 pb-1 flex flex-wrap gap-2 border-t border-blue-100 bg-white/70">
           {activeQuickReplies.map((q) => (
             <button
               key={q}
               onClick={() => onSubmit(q)}
-              className="text-xs px-3 py-1.5 rounded-full bg-white border border-pink-200 text-pink-700 hover:bg-pink-100 transition"
+              className="text-xs px-3 py-1.5 rounded-full bg-white border border-blue-200 text-blue-700 hover:bg-blue-100 transition"
             >
               {q}
             </button>
@@ -299,7 +299,7 @@ function ChatWindow({
           e.preventDefault();
           onSubmit(input);
         }}
-        className="border-t border-pink-100 bg-white p-3 flex items-end gap-2"
+        className="border-t border-blue-100 bg-white p-3 flex items-end gap-2"
       >
         <textarea
           ref={inputRef}
@@ -314,12 +314,12 @@ function ChatWindow({
           rows={1}
           placeholder="Type your message…"
           disabled={isLoading}
-          className="flex-1 resize-none max-h-32 rounded-2xl border border-pink-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300 disabled:opacity-50"
+          className="flex-1 resize-none max-h-32 rounded-2xl border border-blue-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 disabled:opacity-50"
         />
         <button
           type="submit"
           disabled={isLoading || !input.trim()}
-          className="h-10 w-10 shrink-0 rounded-full bg-pink-500 hover:bg-pink-600 text-white flex items-center justify-center transition disabled:opacity-40"
+          className="h-10 w-10 shrink-0 rounded-full bg-blue-500 hover:bg-blue-600 text-white flex items-center justify-center transition disabled:opacity-40"
           aria-label="Send"
         >
           <Send className="h-4 w-4" />
@@ -354,7 +354,7 @@ function MessageBubble({
   if (hideText && toolParts.length === 0) {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[85%] text-sm leading-relaxed bg-pink-500 text-white px-4 py-2.5 rounded-2xl rounded-br-md italic opacity-80">
+        <div className="max-w-[85%] text-sm leading-relaxed bg-blue-500 text-white px-4 py-2.5 rounded-2xl rounded-br-md italic opacity-80">
           (booking details submitted)
         </div>
       </div>
@@ -367,7 +367,7 @@ function MessageBubble({
         className={cn(
           "max-w-[85%] text-sm leading-relaxed",
           isUser
-            ? "bg-pink-500 text-white px-4 py-2.5 rounded-2xl rounded-br-md"
+            ? "bg-blue-500 text-white px-4 py-2.5 rounded-2xl rounded-br-md"
             : "text-gray-800",
         )}
       >
@@ -380,7 +380,7 @@ function MessageBubble({
                   <p className="mb-2 last:mb-0">{children}</p>
                 ),
                 strong: ({ children }) => (
-                  <strong className="font-semibold text-pink-700">
+                  <strong className="font-semibold text-blue-700">
                     {children}
                   </strong>
                 ),
@@ -392,7 +392,7 @@ function MessageBubble({
                     href={href}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-pink-600 underline"
+                    className="text-blue-600 underline"
                   >
                     {children}
                   </a>
@@ -620,14 +620,14 @@ function BookingFormCard({
 
   if (submitted) {
     return (
-      <div className="mt-3 rounded-2xl border border-pink-200 bg-white p-3 text-xs text-gray-600">
+      <div className="mt-3 rounded-2xl border border-blue-200 bg-white p-3 text-xs text-gray-600">
         Details submitted, hold on a second… 💕
       </div>
     );
   }
 
   return (
-    <div className="mt-3 rounded-2xl border border-pink-200 bg-white p-4 shadow-sm">
+    <div className="mt-3 rounded-2xl border border-blue-200 bg-white p-4 shadow-sm">
       <div className="mb-3">
         <div className="text-sm font-semibold text-gray-900">{treatment.label}</div>
         <div className="text-xs text-gray-500">{dtLabel} CT</div>
@@ -677,7 +677,7 @@ function BookingFormCard({
       <button
         type="button"
         onClick={handleSubmit}
-        className="mt-4 w-full h-10 rounded-full bg-pink-500 hover:bg-pink-600 text-white text-sm font-medium transition"
+        className="mt-4 w-full h-10 rounded-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium transition"
       >
         Confirm my booking
       </button>
@@ -706,8 +706,8 @@ function TextField({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         className={cn(
-          "w-full h-9 rounded-lg border px-3 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300",
-          error ? "border-red-300" : "border-pink-200",
+          "w-full h-9 rounded-lg border px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300",
+          error ? "border-red-300" : "border-blue-200",
         )}
       />
       {error && <span className="block text-[10px] text-red-600 mt-0.5">{error}</span>}
@@ -729,7 +729,7 @@ function IntakeField({
   const label = (
     <div className="text-[12px] font-medium text-gray-800 mb-1">
       {field.label}
-      {field.required && <span className="text-pink-600"> *</span>}
+      {field.required && <span className="text-blue-600"> *</span>}
     </div>
   );
 
@@ -759,8 +759,8 @@ function IntakeField({
                 className={cn(
                   "text-[11px] px-2.5 py-1 rounded-full border transition",
                   active
-                    ? "bg-pink-500 text-white border-pink-500"
-                    : "bg-white text-gray-700 border-pink-200 hover:bg-pink-50",
+                    ? "bg-blue-500 text-white border-blue-500"
+                    : "bg-white text-gray-700 border-blue-200 hover:bg-blue-50",
                 )}
               >
                 {opt}
@@ -789,8 +789,8 @@ function IntakeField({
                 className={cn(
                   "text-[11px] px-2.5 py-1 rounded-full border transition",
                   active
-                    ? "bg-pink-500 text-white border-pink-500"
-                    : "bg-white text-gray-700 border-pink-200 hover:bg-pink-50",
+                    ? "bg-blue-500 text-white border-blue-500"
+                    : "bg-white text-gray-700 border-blue-200 hover:bg-blue-50",
                 )}
               >
                 {opt}
@@ -822,8 +822,8 @@ function IntakeField({
                 className={cn(
                   "text-[11px] px-3 py-1 rounded-full border transition",
                   active
-                    ? "bg-pink-500 text-white border-pink-500"
-                    : "bg-white text-gray-700 border-pink-200 hover:bg-pink-50",
+                    ? "bg-blue-500 text-white border-blue-500"
+                    : "bg-white text-gray-700 border-blue-200 hover:bg-blue-50",
                 )}
               >
                 {opt}
@@ -845,8 +845,8 @@ function IntakeField({
           value={current}
           onChange={(e) => onChange(e.target.value)}
           className={cn(
-            "w-full h-9 rounded-lg border px-3 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300",
-            error ? "border-red-300" : "border-pink-200",
+            "w-full h-9 rounded-lg border px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300",
+            error ? "border-red-300" : "border-blue-200",
           )}
         >
           <option value="">Select…</option>
@@ -871,8 +871,8 @@ function IntakeField({
           onChange={(e) => onChange(e.target.value)}
           rows={2}
           className={cn(
-            "w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300",
-            error ? "border-red-300" : "border-pink-200",
+            "w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300",
+            error ? "border-red-300" : "border-blue-200",
           )}
         />
         {error && <div className="text-[10px] text-red-600 mt-1">{error}</div>}
@@ -889,8 +889,8 @@ function IntakeField({
         value={current}
         onChange={(e) => onChange(e.target.value)}
         className={cn(
-          "w-full h-9 rounded-lg border px-3 text-sm focus:outline-none focus:ring-2 focus:ring-pink-300",
-          error ? "border-red-300" : "border-pink-200",
+          "w-full h-9 rounded-lg border px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300",
+          error ? "border-red-300" : "border-blue-200",
         )}
       />
       {error && <div className="text-[10px] text-red-600 mt-1">{error}</div>}
@@ -907,7 +907,7 @@ function TypingIndicator() {
           <Dot delay="0.15s" />
           <Dot delay="0.3s" />
         </div>
-        <span className="text-[12px] text-pink-600/80">Sofia is typing…</span>
+        <span className="text-[12px] text-blue-600/80">Sofia is typing…</span>
       </div>
     </div>
   );
@@ -916,7 +916,7 @@ function TypingIndicator() {
 function Dot({ delay }: { delay: string }) {
   return (
     <span
-      className="h-2 w-2 rounded-full bg-pink-400 animate-bounce"
+      className="h-2 w-2 rounded-full bg-blue-400 animate-bounce"
       style={{ animationDelay: delay }}
     />
   );

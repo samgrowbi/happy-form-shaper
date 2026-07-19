@@ -68,8 +68,8 @@ export function AppointmentSnapshot({
             <div className="space-y-4">
               {/* Treatment */}
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-rose-50 flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-5 h-5 text-rose-600" />
+                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <Calendar className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Treatment</p>
@@ -79,8 +79,8 @@ export function AppointmentSnapshot({
 
               {/* Date & Time */}
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-rose-50 flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-5 h-5 text-rose-600" />
+                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <Clock className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Date & Time</p>
@@ -93,8 +93,8 @@ export function AppointmentSnapshot({
 
               {/* Location */}
               <div className="flex items-start gap-3">
-                <div className="w-10 h-10 rounded-lg bg-rose-50 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="w-5 h-5 text-rose-600" />
+                <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="w-5 h-5 text-blue-600" />
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Location</p>
@@ -105,8 +105,8 @@ export function AppointmentSnapshot({
               {/* Duration */}
               {duration && (
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-rose-50 flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5 text-rose-600" />
+                  <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground">Duration</p>
@@ -118,8 +118,8 @@ export function AppointmentSnapshot({
           </div>
 
           {/* Reschedule / Cancel notice */}
-          <div className="mt-5 rounded-xl border border-pink-200 bg-pink-50/60 p-5 md:p-6 text-center">
-            <div className="flex items-center justify-center gap-2 mb-2 text-pink-600">
+          <div className="mt-5 rounded-xl border border-blue-200 bg-blue-50/60 p-5 md:p-6 text-center">
+            <div className="flex items-center justify-center gap-2 mb-2 text-blue-600">
               <Phone className="w-4 h-4" />
               <span className="text-sm font-semibold tracking-wide uppercase">Need to Reschedule or Cancel?</span>
             </div>
@@ -127,7 +127,7 @@ export function AppointmentSnapshot({
               To reschedule or cancel your appointment, please give us a call at{" "}
               <a
                 href={`tel:${BUSINESS_PHONE_TEL}`}
-                className="font-semibold text-pink-600 hover:text-pink-700 underline-offset-2 hover:underline"
+                className="font-semibold text-blue-600 hover:text-blue-700 underline-offset-2 hover:underline"
               >
                 {BUSINESS_PHONE_DISPLAY}
               </a>

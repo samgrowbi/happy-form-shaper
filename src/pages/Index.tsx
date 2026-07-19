@@ -35,26 +35,25 @@ const IndexInner = () => {
       <Navbar onBookingClick={openBooking} />
       <main>
         <Hero onBookingClick={openBooking} />
-        <section className="py-2 sm:py-4 bg-white" dir="ltr">
-          <div className="container mx-auto px-4">
-            <InlineBooking />
-          </div>
-        </section>
         <TrustStrip />
-        <WhoIsThisFor />
-        <Suspense fallback={<div className="min-h-[150px]" />}>          <Results />
+        <Suspense fallback={<div className="min-h-[150px]" />}>
+          <Results />
+          <Feedback />
+          <section className="py-2 sm:py-4 bg-white" dir="ltr">
+            <div className="container mx-auto px-4">
+              <InlineBooking />
+            </div>
+          </section>
+          <WhoIsThisFor />
           <ProblemSolution />
-          {/* Bridge line moved into ProblemSolution component */}
           <Technology onBookingClick={openBooking} />
           <VisitSteps />
-          <Feedback />
           <ClientReviews />
-          <FAQ />
           <About onBookingClick={openBooking} />
-          
           <Partners />
           <Gallery />
           <Location />
+          <FAQ />
         </Suspense>
       </main>
       <Suspense fallback={null}>
