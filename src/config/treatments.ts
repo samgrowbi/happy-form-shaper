@@ -79,6 +79,20 @@ export interface TreatmentConfig {
     badgeText: string;
     emotionalClose?: { text: string; highlight: string };
   };
+  /**
+   * Sofia chatbot intake fields (mapped to Acuity custom fields).
+   * Independent from the on-page BookingForm which fetches fields live from acuity-forms.
+   */
+  intakeFields?: ChatIntakeField[];
+}
+
+export interface ChatIntakeField {
+  acuityFieldId: number;
+  label: string;
+  type: "checkboxes" | "radio" | "select" | "text" | "textarea" | "yesno";
+  options?: string[];
+  required: boolean;
+  helpText?: string;
 }
 
 export const LED_TREATMENT: TreatmentConfig = {
