@@ -10,9 +10,12 @@ const treatments: Record<string, TreatmentConfig> = {
   led: LED_TREATMENT,
   "instant-lift": INSTANT_LIFT_TREATMENT,
   "led-cryo": LED_CRYO_TREATMENT,
+  ems: BODY_SCULPTING_TREATMENT,
+  // Backward-compat: legacy slug maps to the renamed EMS treatment.
   "body-sculpting": BODY_SCULPTING_TREATMENT,
 };
 
 export function getTreatmentBySlug(slug: string | null): TreatmentConfig {
-  return (slug && treatments[slug]) || INSTANT_LIFT_TREATMENT;
+  // LED is now the primary treatment (homepage). Fall back to LED for unknown slugs.
+  return (slug && treatments[slug]) || LED_TREATMENT;
 }

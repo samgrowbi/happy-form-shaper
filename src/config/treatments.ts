@@ -94,9 +94,9 @@ export const LED_TREATMENT: TreatmentConfig = {
   heroVideoUrl:
     "https://pub-eb17aaa123fc4145b1ee4c15fc2e5771.r2.dev/Med%20Spa/Hero%20Video/LED%20Hero%20Video.mp4",
   price: "69.99",
-  originalPrice: "249.99",
-  appointmentTypeId: "90990594",
-  calendarId: "13836448",
+  originalPrice: "299.99",
+  appointmentTypeId: "89238158",
+  calendarId: "13553882",
   duration: 60,
   image: treatmentImage,
   technologyDescription: [
@@ -207,22 +207,22 @@ export const LED_CRYO_TREATMENT: TreatmentConfig = {
 };
 
 export const BODY_SCULPTING_TREATMENT: TreatmentConfig = {
-  slug: "body-sculpting",
-  label: "Body Sculpting Fat Reduction Treatment",
+  slug: "ems",
+  label: "Body Cavitation Fat Reduction Treatment",
   heroTitle: {
-    line1: "Body Sculpting",
+    line1: "Body Cavitation",
     highlight: "Fat Reduction",
     line2: "Treatment",
   },
   heroSubtitle:
-    "Experience the revolutionary body sculpting technology that tones muscles and reduces fat instantly without any downtime.",
+    "Experience the revolutionary body cavitation technology that tones muscles and reduces fat instantly without any downtime.",
   heroVideoUrl:
     "https://pub-eb17aaa123fc4145b1ee4c15fc2e5771.r2.dev/Med%20Spa/Hero%20Video/ems%20Hero.mp4",
   price: "79.99",
   originalPrice: "399.99",
-  appointmentTypeId: "71100482",
-  calendarId: "11004724",
-  duration: 75,
+  appointmentTypeId: "89277707",
+  calendarId: "13553882",
+  duration: 60,
   image: treatmentImage,
   technologyDescription: [
     "Get ready to feel confident and radiant with Body Sculpting. Imagine a natural, non-surgical treatment that tones your muscles, melts away stubborn fat, and smooths out cellulite.",
