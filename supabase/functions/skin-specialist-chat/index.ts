@@ -28,17 +28,29 @@ type TreatmentInfo = {
 };
 
 const TREATMENTS: Record<string, TreatmentInfo> = {
-  "instant-lift": {
-    slug: "instant-lift",
-    name: "Instant Lift & Skin Tightening Treatment",
-    appointmentTypeId: "93509464",
-    price: "79.99",
-    originalPrice: "349.99",
+  led: {
+    slug: "led",
+    name: "Non-Surgical Face & Neck Lift Treatment",
+    appointmentTypeId: "89238158",
+    price: "69.99",
+    originalPrice: "299.99",
     duration: 60,
     goodFor:
       "Women 35+ with fine lines, loss of firmness, dull or uneven tone, tired-looking complexion. No injectables, no downtime.",
     shortPitch:
       "Specific wavelengths of LED light go into the deeper layers of your skin and switch on your own collagen production. Most clients leave with a visible glow and lift after the first session.",
+  },
+  ems: {
+    slug: "ems",
+    name: "Body Cavitation Fat Reduction Treatment",
+    appointmentTypeId: "89277707",
+    price: "79.99",
+    originalPrice: "399.99",
+    duration: 60,
+    goodFor:
+      "Women who want to reduce stubborn fat, tone muscles, and smooth cellulite without surgery or downtime.",
+    shortPitch:
+      "Non-invasive body cavitation that helps melt stubborn fat, tone muscles, and smooth cellulite. Zero downtime, visible results.",
   },
 };
 
