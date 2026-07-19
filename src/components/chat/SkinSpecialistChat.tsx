@@ -33,12 +33,7 @@ const WELCOME_MESSAGE: UIMessage = {
   ],
 };
 
-// Meta Pixel is loaded from index.html; fbq is on window.
-declare global {
-  interface Window {
-    fbq?: (...args: unknown[]) => void;
-  }
-}
+// Meta Pixel is loaded from index.html; fbq is declared on Window in src/vite-env.d.ts.
 
 function getOrCreateSessionId(): string {
   if (typeof window === "undefined") return "";
