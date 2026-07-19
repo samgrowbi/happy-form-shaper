@@ -218,6 +218,49 @@ export const LED_CRYO_TREATMENT: TreatmentConfig = {
         "Many clients notice an immediate refreshed, lifted look right after the first session, with continued improvement as the skin responds over time.",
     },
   ],
+  intakeFields: [
+    {
+      acuityFieldId: 18044943,
+      label: "Please tick your main concerns",
+      type: "checkboxes",
+      required: true,
+      options: [
+        "Sagging Neck",
+        "Sagging Cheeks",
+        "Fine Lines",
+        "Wrinkles",
+        "Acne",
+        "Pigmentation",
+        "Sun Damage",
+        "Dark Circles",
+        "Rosacea",
+        "Big Pores",
+        "Skin Texture",
+        "No Concerns",
+      ],
+    },
+    {
+      acuityFieldId: 18044944,
+      label: "Please specify your age range",
+      type: "radio",
+      required: true,
+      options: ["Below 20", "21-34", "35-49", "50-65", "66+"],
+    },
+    {
+      acuityFieldId: 18044945,
+      label: "I agree to the promotional cancellation policy",
+      type: "yesno",
+      required: true,
+      helpText:
+        "Promotional appointments can be rescheduled once, at least 24 hours in advance. No-shows or late reschedules forfeit the promo.",
+    },
+    {
+      acuityFieldId: 18044951,
+      label: "I agree to receive SMS + email appointment reminders",
+      type: "yesno",
+      required: true,
+    },
+  ],
 };
 
 export const BODY_SCULPTING_TREATMENT: TreatmentConfig = {
