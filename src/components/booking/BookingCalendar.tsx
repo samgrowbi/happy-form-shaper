@@ -5,8 +5,8 @@ import { formatDateOnly } from "@/lib/dateOnly";
 import { format } from "date-fns";
 import { Flame } from "lucide-react";
 
-const PINK_SOLID = "#F44798";
-const PINK_BORDER = "rgba(244, 71, 152, 0.2)";
+const PINK_SOLID = "#3B82F6";
+const PINK_BORDER = "rgba(59, 130, 246, 0.2)";
 
 interface BookingCalendarProps {
   selectedDate: Date | undefined;
