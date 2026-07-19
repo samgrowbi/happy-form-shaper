@@ -7,13 +7,9 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ThankYou from "./pages/ThankYou";
 
-import BookLedCryo from "./pages/BookLedCryo";
 import BookLed from "./pages/BookLed";
 import BookBodySculpting from "./pages/BookBodySculpting";
-import BookInstantLift from "./pages/BookInstantLift";
-import LedCryo from "./pages/LedCryo";
 import BodySculpting from "./pages/BodySculpting";
-import InstantLift from "./pages/InstantLift";
 import SkinSpecialistChat from "./components/chat/SkinSpecialistChat";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
@@ -30,19 +26,22 @@ const App = () => (
           {/* Homepage renders the LED (Non-Surgical Face & Neck Lift) treatment */}
           <Route path="/" element={<Index />} />
           <Route path="/led" element={<Index />} />
-          <Route path="/instant-lift" element={<InstantLift />} />
-          <Route path="/led-cryo" element={<LedCryo />} />
-          {/* Body Sculpting renamed to EMS */}
+          {/* Body Cavitation (EMS) */}
           <Route path="/ems" element={<BodySculpting />} />
           <Route path="/body-sculpting" element={<Navigate to="/ems" replace />} />
 
-          {/* Booking routes - /book is the primary LED booking page */}
+          {/* Booking routes */}
           <Route path="/book" element={<BookLed />} />
           <Route path="/book/led" element={<Navigate to="/book" replace />} />
-          <Route path="/book/instant-lift" element={<BookInstantLift />} />
-          <Route path="/book/led-cryo" element={<BookLedCryo />} />
           <Route path="/book/ems" element={<BookBodySculpting />} />
           <Route path="/book/body-sculpting" element={<Navigate to="/book/ems" replace />} />
+
+          {/* Legacy routes redirect home */}
+          <Route path="/instant-lift" element={<Navigate to="/" replace />} />
+          <Route path="/led-cryo" element={<Navigate to="/" replace />} />
+          <Route path="/book/instant-lift" element={<Navigate to="/book" replace />} />
+          <Route path="/book/led-cryo" element={<Navigate to="/book" replace />} />
+
 
           <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/auth" element={<Auth />} />
