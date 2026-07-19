@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { 
+import {
+  DEFAULT_ACUITY_APPOINTMENT_TYPE_ID,
   DEFAULT_ACUITY_TIMEZONE,
-  TREATMENT_IMAGE, 
+  TREATMENT_IMAGE,
 } from "@/config/acuity";
 import { TreatmentConfig } from "@/config/treatments";
 import { IntakeForm } from "@/components/booking/IntakeFormField";
@@ -147,7 +148,7 @@ export function useAcuityBooking(onBookingSuccess?: () => void, isMobile?: boole
     });
   }, [currentStep, treatmentConfig?.slug]);
 
-  const appointmentTypeID = treatmentConfig?.appointmentTypeId || "89238158";
+  const appointmentTypeID = treatmentConfig?.appointmentTypeId || DEFAULT_ACUITY_APPOINTMENT_TYPE_ID;
   const calendarID = treatmentConfig?.calendarId || "13553882";
 
   const filterIntakeForms = (forms: IntakeForm[]) =>

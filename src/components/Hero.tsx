@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRef, useEffect } from "react";
 import { useTreatment } from "@/context/TreatmentContext";
+import { DEFAULT_ACUITY_APPOINTMENT_TYPE_ID } from "@/config/acuity";
 import { RotatingText } from "./ui/RotatingText";
 import { AccentWord } from "./ui/AccentWord";
 
@@ -43,7 +44,7 @@ export function Hero({ onBookingClick }: HeroProps) {
     };
   }, []);
 
-  const appointmentTypeID = treatment.appointmentTypeId || "89238158";
+  const appointmentTypeID = treatment.appointmentTypeId || DEFAULT_ACUITY_APPOINTMENT_TYPE_ID;
   const calendarID = treatment.calendarId || "13553882";
 
   const prefetchBookingData = () => {
