@@ -16,7 +16,7 @@ const bodyBenefits = [
 
 export function WhyShowingUpMatters() {
   const treatment = useTreatment();
-  const benefits = treatment.slug === "body-sculpting" ? bodyBenefits : facialBenefits;
+  const benefits = treatment.slug === "ems" ? bodyBenefits : facialBenefits;
 
   return (
     <section className="py-12 md:py-16 bg-white">

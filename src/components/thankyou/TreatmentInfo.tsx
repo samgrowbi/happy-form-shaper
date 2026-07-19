@@ -15,20 +15,20 @@ const treatmentDescriptions: Record<string, { noteLine: string; description: str
     noteLine: "It is a real, results-driven treatment performed by trained professionals who specialize in advanced skincare technology.",
     description: "Our LED + Cryo technology combines therapeutic light energy with cryotherapy to stimulate collagen production, tighten skin, and reduce inflammation for visible, lasting results.",
   },
-  "body-sculpting": {
-    noteLine: "It is a real, results-driven treatment performed by trained professionals who specialize in advanced body sculpting technology.",
-    description: "Our body sculpting technology uses advanced non-invasive methods to tone muscles, reduce stubborn fat, and smooth cellulite for a more sculpted, contoured look.",
+  ems: {
+    noteLine: "It is a real, results-driven treatment performed by trained professionals who specialize in advanced body cavitation technology.",
+    description: "Our body cavitation technology uses advanced non-invasive methods to tone muscles, reduce stubborn fat, and smooth cellulite for a more sculpted, contoured look.",
   },
 };
 
 function getTreatmentInfo(treatment: ReturnType<typeof useTreatment>) {
-  return treatmentDescriptions[treatment.slug] || treatmentDescriptions["instant-lift"];
+  return treatmentDescriptions[treatment.slug] || treatmentDescriptions["led"];
 }
 
 export function TreatmentInfo() {
   const treatment = useTreatment();
   const info = getTreatmentInfo(treatment);
-  const sectionImage = treatment.slug === "body-sculpting" ? bodyImage : treatmentImage;
+  const sectionImage = treatment.slug === "ems" ? bodyImage : treatmentImage;
 
   return (
     <section className="py-12 md:py-16 bg-gray-50">

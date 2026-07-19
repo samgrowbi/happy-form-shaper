@@ -3,19 +3,20 @@
 
 import treatmentImage from "@/assets/treatment-facial.webp";
 
-export const DEFAULT_ACUITY_APPOINTMENT_TYPE_ID = "93509464";
-export const DEFAULT_ACUITY_CALENDAR_ID = "14112013";
-export const DEFAULT_ACUITY_TIMEZONE = "America/Los_Angeles";
+export const DEFAULT_ACUITY_APPOINTMENT_TYPE_ID = "89238158";
+export const DEFAULT_ACUITY_CALENDAR_ID = "13553882";
+// Pearl Aesthetics is in Pearland, TX (America/Chicago, GMT-5 in DST).
+export const DEFAULT_ACUITY_TIMEZONE = "America/Chicago";
 
 // Local treatment image for use with dynamic API data
 export const TREATMENT_IMAGE = treatmentImage;
 
 // Promotional price override (API returns full price)
-export const PROMOTIONAL_PRICE = "79.99";
+export const PROMOTIONAL_PRICE = "69.99";
 
 // Fallback details if API fails
 export const TREATMENT_DETAILS_FALLBACK = {
-  id: 93509464,
+  id: 89238158,
   name: "Treatment",
   description: "",
   duration: 60,
