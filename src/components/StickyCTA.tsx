@@ -4,6 +4,7 @@ import { Calendar } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useTreatment } from "@/context/TreatmentContext";
+import { DEFAULT_ACUITY_APPOINTMENT_TYPE_ID } from "@/config/acuity";
 import { Events, track } from "@/lib/analytics";
 
 interface StickyCTAProps {
