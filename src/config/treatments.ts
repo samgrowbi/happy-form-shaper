@@ -377,6 +377,22 @@ export const BODY_SCULPTING_TREATMENT: TreatmentConfig = {
     hookNote: "Your body is ready for a change.",
     emotionalClose: { text: "This isn't just about your body. It's about", highlight: "feeling confident again." },
   },
+  intakeFields: [
+    {
+      acuityFieldId: 18044945,
+      label: "I agree to the promotional cancellation policy",
+      type: "yesno",
+      required: true,
+      helpText:
+        "Promotional appointments can be rescheduled once, at least 24 hours in advance. No-shows or late reschedules forfeit the promo.",
+    },
+    {
+      acuityFieldId: 18044951,
+      label: "I agree to receive SMS + email appointment reminders",
+      type: "yesno",
+      required: true,
+    },
+  ],
 };
 
 // Instant Lift treatment - duplicate of LED with different appointment type
