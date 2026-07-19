@@ -111,7 +111,7 @@ export default function ThankYou() {
                   led: "/",
                   "instant-lift": "/",
                   "led-cryo": "/led-cryo",
-                  "ems": "/body-sculpting",
+                  "ems": "/ems",
                 };
                 navigate(slugToPath[treatmentConfig.slug] ?? (treatmentConfig.slug ? `/book/${treatmentConfig.slug}` : "/"));
               }}
