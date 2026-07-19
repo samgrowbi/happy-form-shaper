@@ -25,7 +25,7 @@ const getTimezoneName = (timezone: string): string => {
     "America/New_York": "Eastern Time (ET)",
     "America/Chicago": "Central Time (CT)",
     "America/Denver": "Mountain Time (MT)",
-    "America/Chicago": "Central Time (CT)",
+    "America/Los_Angeles": "Pacific Time (PT)",
     "America/Phoenix": "Arizona Time (AZ)",
     "America/Anchorage": "Alaska Time (AK)",
     "Pacific/Honolulu": "Hawaii Time (HT)",
