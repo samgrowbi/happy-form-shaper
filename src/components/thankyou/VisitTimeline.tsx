@@ -33,10 +33,10 @@ const bodySteps = [
   {
     title: "Body Assessment & Consultation",
     duration: "10-15 minutes",
-    description: "We assess your target areas and explain exactly how the body sculpting treatment works.",
+    description: "We assess your target areas and explain exactly how the body cavitation treatment works.",
   },
   {
-    title: "Body Sculpting Session",
+    title: "Body Cavitation Session",
     duration: null,
     description: "Advanced non-invasive technology works to tone muscles, reduce fat, and contour your body.",
   },
