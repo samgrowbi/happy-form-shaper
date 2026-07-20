@@ -1,6 +1,9 @@
 import { Check } from "lucide-react";
 import consultationImage from "@/assets/thankyou/consultation.webp";
+import emsConsultationAsset from "@/assets/thankyou/ems-consultation.png.asset.json";
 import { useTreatment } from "@/context/TreatmentContext";
+
+const bodySlugs = new Set(["ems", "body-sculpting"]);
 
 const facialBenefits = [
   "A professional consultation",
