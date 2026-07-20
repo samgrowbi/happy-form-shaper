@@ -19,7 +19,9 @@ const bodyBenefits = [
 
 export function WhyShowingUpMatters() {
   const treatment = useTreatment();
-  const benefits = treatment.slug === "ems" ? bodyBenefits : facialBenefits;
+  const isBody = bodySlugs.has(treatment.slug);
+  const benefits = isBody ? bodyBenefits : facialBenefits;
+  const imageSrc = isBody ? emsConsultationAsset.url : consultationImage;
 
   return (
     <section className="py-12 md:py-16 bg-white">
