@@ -1,7 +1,7 @@
 import googleMapsLogo from "@/assets/google-maps-logo.webp";
 import yelpLogo from "@/assets/yelp-logo.webp";
 import trustpilotLogo from "@/assets/trustpilot-logo.webp";
-import aboutHero from "@/assets/about-hero.webp";
+const aboutHero = "https://www.pearl-aesthetics-tx.com/assets/ems-about-treatment-DdHLPuDw.png";
 
 import { Button } from "@/components/ui/button";
 import { useTreatment } from "@/context/TreatmentContext";
