@@ -1,6 +1,9 @@
 import { Check } from "lucide-react";
 import consultationImage from "@/assets/thankyou/consultation.webp";
+import emsConsultationAsset from "@/assets/thankyou/ems-consultation.png.asset.json";
 import { useTreatment } from "@/context/TreatmentContext";
+
+const bodySlugs = new Set(["ems", "body-sculpting"]);
 
 const facialBenefits = [
   "A professional consultation",
@@ -16,7 +19,9 @@ const bodyBenefits = [
 
 export function WhyShowingUpMatters() {
   const treatment = useTreatment();
-  const benefits = treatment.slug === "ems" ? bodyBenefits : facialBenefits;
+  const isBody = bodySlugs.has(treatment.slug);
+  const benefits = isBody ? bodyBenefits : facialBenefits;
+  const imageSrc = isBody ? emsConsultationAsset.url : consultationImage;
 
   return (
     <section className="py-12 md:py-16 bg-white">
@@ -34,7 +39,7 @@ export function WhyShowingUpMatters() {
             {/* Image */}
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <img 
-                src={consultationImage} 
+                src={imageSrc} 
                 alt="Specialist having a consultation with client in treatment room"
                 className="w-full h-64 md:h-80 object-cover"
                loading="lazy" decoding="async"/>
