@@ -57,7 +57,7 @@ export function Footer() {
           </div>
 
           {/* Quick Links & Business Hours */}
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-[1fr_auto] gap-4 lg:gap-8">
             {/* Quick Links */}
             <div>
               <h4 className="text-lg lg:text-2xl font-semibold mb-6">Quick Links</h4>
@@ -79,7 +79,7 @@ export function Footer() {
                     <Clock size={20} className="shrink-0 mt-0.5 hidden sm:block" />
                     <div>
                       <p className="text-white">{row.days}</p>
-                      <p>{row.hours}</p>
+                      <p className="whitespace-nowrap">{row.hours}</p>
                     </div>
                   </li>
                 ))}
