@@ -10,7 +10,7 @@ const facialBenefits = [
 
 const bodyBenefits = [
   "A professional body assessment",
-  "A customized sculpting session",
+  "A customized cavitation session",
   "Personalized recommendations for your body goals",
 ];
 

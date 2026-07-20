@@ -313,7 +313,7 @@ export const BODY_SCULPTING_TREATMENT: TreatmentConfig = {
     {
       question: "How long is the treatment?",
       answer:
-        "Each session takes approximately 75 minutes. We recommend arriving a few minutes early for your first visit.",
+        "Each session takes approximately 60 minutes. We recommend arriving a few minutes early for your first visit.",
     },
     {
       question: "How should I prepare for my treatment?",
