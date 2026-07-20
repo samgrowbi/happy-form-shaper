@@ -39,7 +39,7 @@ export function WhyShowingUpMatters() {
             {/* Image */}
             <div className="relative rounded-2xl overflow-hidden shadow-lg">
               <img 
-                src={consultationImage} 
+                src={imageSrc} 
                 alt="Specialist having a consultation with client in treatment room"
                 className="w-full h-64 md:h-80 object-cover"
                loading="lazy" decoding="async"/>
