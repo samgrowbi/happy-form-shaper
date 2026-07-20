@@ -282,12 +282,12 @@ export const BODY_SCULPTING_TREATMENT: TreatmentConfig = {
   duration: 60,
   image: treatmentImage,
   technologyDescription: [
-    "Get ready to feel confident and radiant with Body Sculpting. Imagine a natural, non-surgical treatment that tones your muscles, melts away stubborn fat, and smooths out cellulite.",
+    "Get ready to feel confident and radiant with Body Cavitation. Imagine a natural, non-surgical treatment that tones your muscles, melts away stubborn fat, and smooths out cellulite.",
     "And suddenly, what you see in the mirror doesn't match how you feel inside.",
     "This treatment is designed to change that.",
     "This non-invasive treatment awakens your body's natural transformation potential, delivering visible, lasting results without any downtime.",
   ],
-  technologyTitle: { main: "Advanced Body Sculpting for", highlight: "Visible Results" },
+  technologyTitle: { main: "Advanced Body Cavitation for", highlight: "Visible Results" },
   hideDeviceImage: true,
   technologyHighlights: [
     { text: "Say goodbye to cellulite with smoother, dimple-free skin", title: "Say Goodbye to Cellulite", description: "Enjoy smoother, dimple-free skin that you'll love to show off." },
