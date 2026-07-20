@@ -106,7 +106,7 @@ export const LED_TREATMENT: TreatmentConfig = {
   heroSubtitle:
     "No Surgery. No Pain. Zero Downtime.",
   heroVideoUrl:
-    "https://pub-eb17aaa123fc4145b1ee4c15fc2e5771.r2.dev/Med%20Spa/Hero%20Video/LED%20Hero%20Video.mp4",
+    "https://growbi.b-cdn.net/Hero%20Video/Takkra%20LED%20Video%201%20(Model%201)%20Horizontal.mp4",
   price: "69.99",
   originalPrice: "299.99",
   appointmentTypeId: "89238158",
@@ -274,7 +274,7 @@ export const BODY_SCULPTING_TREATMENT: TreatmentConfig = {
   heroSubtitle:
     "Experience the revolutionary body cavitation technology that tones muscles and reduces fat instantly without any downtime.",
   heroVideoUrl:
-    "https://pub-eb17aaa123fc4145b1ee4c15fc2e5771.r2.dev/Med%20Spa/Hero%20Video/ems%20Hero.mp4",
+    "https://growbi.b-cdn.net/Hero%20Video/Takkra%20Body%20Sculpting.mp4",
   price: "79.99",
   originalPrice: "399.99",
   appointmentTypeId: "89277707",
