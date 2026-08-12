@@ -11,7 +11,7 @@ import { BODY_SCULPTING_TREATMENT } from "@/config/treatments";
 import { BRAND_NAME } from "@/config/brand";
 
 const Results = lazy(() => import("@/components/Results").then(m => ({ default: m.Results })));
-const ProblemSolution = lazy(() => import("@/components/ProblemSolution").then(m => ({ default: m.ProblemSolution })));
+const WhoThisIsForBody = lazy(() => import("@/components/WhoThisIsForBody").then(m => ({ default: m.WhoThisIsForBody })));
 const Gallery = lazy(() => import("@/components/Gallery").then(m => ({ default: m.Gallery })));
 const Feedback = lazy(() => import("@/components/Feedback").then(m => ({ default: m.Feedback })));
 const Technology = lazy(() => import("@/components/Technology").then(m => ({ default: m.Technology })));
@@ -39,7 +39,7 @@ const BodySculptingInner = () => {
         </section>
         <Suspense fallback={<div className="min-h-[200px]" />}>
           <Results />
-          <ProblemSolution />
+          <WhoThisIsForBody />
           <Feedback />
           <Technology onBookingClick={openBooking} />
           <ClientReviews />
