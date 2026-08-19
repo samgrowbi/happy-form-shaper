@@ -24,14 +24,24 @@ import a11Before from "@/assets/before-after/a11-before.jpg.asset.json";
 import a11After from "@/assets/before-after/a11-after.jpg.asset.json";
 import a12Before from "@/assets/before-after/a12-before.jpeg.asset.json";
 import a12After from "@/assets/before-after/a12-after.jpeg.asset.json";
-const R2_BASE = "https://pub-eb17aaa123fc4145b1ee4c15fc2e5771.r2.dev/Med%20Spa/Before%20After";
+import a3Before from "@/assets/before-after/a3-before.png.asset.json";
+import a3After from "@/assets/before-after/a3-after.png.asset.json";
+import a4Before from "@/assets/before-after/a4-before.png.asset.json";
+import a4After from "@/assets/before-after/a4-after.png.asset.json";
+import a5Before from "@/assets/before-after/a5-before.png.asset.json";
+import a5After from "@/assets/before-after/a5-after.png.asset.json";
+import a6Before from "@/assets/before-after/a6-before.png.asset.json";
+import a6After from "@/assets/before-after/a6-after.png.asset.json";
+import a7Before from "@/assets/before-after/a7-before.png.asset.json";
+import a7After from "@/assets/before-after/a7-after.png.asset.json";
 
 const defaultResults = [
-  { id: 3, before: `${R2_BASE}/a3-before.png`, after: `${R2_BASE}/a3-after.png`, label: "Facial Lifting", name: "Maria", age: 61 },
-  { id: 4, before: `${R2_BASE}/a4-before.png`, after: `${R2_BASE}/a4-after.png`, label: "Skin Rejuvenation", name: "Jennifer", age: 55 },
-  { id: 5, before: `${R2_BASE}/a5-after.png`, after: `${R2_BASE}/a5-before.png`, label: "Pigmentation", name: "Laura", age: 58 },
-  { id: 6, before: `${R2_BASE}/a6-after.png`, after: `${R2_BASE}/a6-before.png`, label: "Skin Tightening", name: "Rachel", age: 68 },
-  { id: 7, before: `${R2_BASE}/a7-before.png`, after: `${R2_BASE}/a7-after.png`, label: "Neck Rejuvenation", name: "Diana", age: 58 },
+  { id: 3, before: a3Before.url, after: a3After.url, label: "Facial Lifting", name: "Maria", age: 61 },
+  { id: 4, before: a4Before.url, after: a4After.url, label: "Skin Rejuvenation", name: "Jennifer", age: 55 },
+  { id: 5, before: a5After.url, after: a5Before.url, label: "Pigmentation", name: "Laura", age: 58 },
+  { id: 6, before: a6After.url, after: a6Before.url, label: "Skin Tightening", name: "Rachel", age: 68 },
+  { id: 7, before: a7Before.url, after: a7After.url, label: "Neck Rejuvenation", name: "Diana", age: 58 },
+
   { id: 11, before: faceCatherineBefore.url, after: faceCatherineAfter.url, label: "Skin Rejuvenation", name: "Catherine", age: 54 },
   { id: 12, before: faceMargaretBefore.url, after: faceMargaretAfter.url, label: "Facial Lifting", name: "Margaret", age: 57 },
   { id: 13, before: faceElaineBefore.url, after: faceElaineAfter.url, label: "Wrinkle Reduction", name: "Elaine", age: 62 },
