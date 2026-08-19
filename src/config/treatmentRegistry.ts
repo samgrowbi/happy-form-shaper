@@ -3,6 +3,7 @@ import {
   LED_CRYO_TREATMENT,
   BODY_SCULPTING_TREATMENT,
   INSTANT_LIFT_TREATMENT,
+  FACIAL_CRYO_TREATMENT,
   TreatmentConfig,
 } from "./treatments";
 
@@ -13,6 +14,7 @@ const treatments: Record<string, TreatmentConfig> = {
   ems: BODY_SCULPTING_TREATMENT,
   // Backward-compat: legacy slug maps to the renamed EMS treatment.
   "body-sculpting": BODY_SCULPTING_TREATMENT,
+  "facial-cryotherapy": FACIAL_CRYO_TREATMENT,
 };
 
 export function getTreatmentBySlug(slug: string | null): TreatmentConfig {
