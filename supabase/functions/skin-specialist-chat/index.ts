@@ -107,6 +107,19 @@ const TREATMENTS: Record<string, TreatmentInfo> = {
       "Non-invasive body cavitation that helps melt stubborn fat, tone muscles, and smooth cellulite. Zero downtime, visible results.",
     intakeFields: [...UNIVERSAL_CONSENT_FIELDS],
   },
+  "facial-cryotherapy": {
+    slug: "facial-cryotherapy",
+    name: "Facial Cryotherapy Treatment",
+    appointmentTypeId: "97274146",
+    price: "79.99",
+    originalPrice: "399.99",
+    duration: 60,
+    goodFor:
+      "Anyone with puffiness, facial swelling, loss of firmness, dull or tired-looking skin, redness and irritation, enlarged pores, or under-eye puffiness and dark circles.",
+    shortPitch:
+      "Controlled cooling instantly depuffs and tightens the face and neck, calms redness, and boosts circulation for an immediate lift and glow. No heat, no injectables, zero downtime.",
+    intakeFields: [...UNIVERSAL_CONSENT_FIELDS],
+  },
 };
 
 const TREATMENT_SLUGS = Object.keys(TREATMENTS) as [string, ...string[]];
