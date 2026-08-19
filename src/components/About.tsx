@@ -12,7 +12,14 @@ interface AboutProps {
   onBookingClick: () => void;
 }
 
+const ABOUT_VIDEO = "https://Growbi.b-cdn.net/Lovable/V9.mp4";
+
 export function About({ onBookingClick }: AboutProps) {
+  const treatment = useTreatment();
+  const slug = treatment?.slug ?? "";
+  const isBody = slug.includes("ems") || slug.includes("body");
+  const useVideo = !isBody;
+
 
   return (
     <section id="about" className="py-4 md:py-8 lg:py-16 bg-white relative overflow-hidden" dir="ltr">
