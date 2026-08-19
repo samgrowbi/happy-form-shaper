@@ -73,12 +73,25 @@ export function About({ onBookingClick }: AboutProps) {
             {/* Video Section — Mobile Only */}
             <div className="block lg:hidden w-full relative">
               <div className="relative rounded-2xl overflow-hidden shadow-xl shadow-blue-100/50 border border-blue-100/60 group">
-                <img
-                  src={aboutHero}
-                  alt="Facial treatment"
-                  loading="lazy"
-                  className="w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
-                />
+                {useVideo ? (
+                  <video
+                    src={ABOUT_VIDEO}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="none"
+                    className="w-full aspect-[9/16] max-h-[400px] object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                ) : (
+                  <img
+                    src={aboutHero}
+                    alt="Facial treatment"
+                    loading="lazy"
+                    className="w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
+                  />
+                )}
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-transparent pointer-events-none" />
               </div>
             </div>
