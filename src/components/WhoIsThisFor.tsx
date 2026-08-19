@@ -34,6 +34,13 @@ const cardVariants: Variants = {
 };
 
 export function WhoIsThisFor() {
+  const treatment = useTreatment();
+  const override = treatment.whoIsThisFor;
+  const concerns = override
+    ? override.concerns.map((text, i) => ({ text, icon: iconCycle[i % iconCycle.length] }))
+    : defaultConcerns;
+  const subtitle = override?.subtitle ?? defaultSubtitle;
+
   return (
     <section className="py-6 md:py-8 lg:py-16 bg-gradient-to-b from-white via-blue-50/30 to-white" dir="ltr">
       <div className="container mx-auto px-5">
