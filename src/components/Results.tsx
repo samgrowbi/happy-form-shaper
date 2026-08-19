@@ -16,6 +16,14 @@ import faceVanessaBefore from "@/assets/before-after/face_vanessa_before.webp.as
 import faceVanessaAfter from "@/assets/before-after/face_vanessa_after.webp.asset.json";
 import faceRosalindBefore from "@/assets/before-after/face_rosalind_before.webp.asset.json";
 import faceRosalindAfter from "@/assets/before-after/face_rosalind_after.webp.asset.json";
+import a1Before from "@/assets/before-after/a1-before.png.asset.json";
+import a1After from "@/assets/before-after/a1-after.png.asset.json";
+import a10Before from "@/assets/before-after/a10-before.jpg.asset.json";
+import a10After from "@/assets/before-after/a10-after.jpg.asset.json";
+import a11Before from "@/assets/before-after/a11-before.jpg.asset.json";
+import a11After from "@/assets/before-after/a11-after.jpg.asset.json";
+import a12Before from "@/assets/before-after/a12-before.jpeg.asset.json";
+import a12After from "@/assets/before-after/a12-after.jpeg.asset.json";
 const R2_BASE = "https://pub-eb17aaa123fc4145b1ee4c15fc2e5771.r2.dev/Med%20Spa/Before%20After";
 
 const defaultResults = [
@@ -30,7 +38,12 @@ const defaultResults = [
   { id: 14, before: faceBriannaBefore.url, after: faceBriannaAfter.url, label: "Skin Tightening", name: "Brianna", age: 34 },
   { id: 15, before: faceVanessaBefore.url, after: faceVanessaAfter.url, label: "Skin Rejuvenation", name: "Vanessa", age: 49 },
   { id: 16, before: faceRosalindBefore.url, after: faceRosalindAfter.url, label: "Neck Rejuvenation", name: "Rosalind", age: 63 },
+  { id: 1, before: a1Before.url, after: a1After.url, label: "Acne Treatment" },
+  { id: 17, before: a10Before.url, after: a10After.url, label: "Cheek Pigmentation" },
+  { id: 18, before: a11Before.url, after: a11After.url, label: "Under Eye Treatment" },
+  { id: 19, before: a12Before.url, after: a12After.url, label: "Facial Pigmentation" },
 ];
+
 
 export function Results() {
   const [api, setApi] = useState<CarouselApi>();
