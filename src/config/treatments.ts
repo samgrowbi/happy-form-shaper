@@ -79,6 +79,25 @@ export interface TreatmentConfig {
     badgeText: string;
     emotionalClose?: { text: string; highlight: string };
   };
+  /** "Who Is This For?" section overrides (falls back to the default facial concerns) */
+  whoIsThisFor?: {
+    subtitle?: string;
+    concerns: string[];
+  };
+  /** "Feel Comfortable In Your Skin" section overrides */
+  feelComfortable?: {
+    problemCopy: string;
+    bridgeLine?: { text: string; highlight: string };
+    benefits: { title: string; description: string }[];
+  };
+  /** Thank-you page copy overrides */
+  thankYou?: {
+    noteLine?: string;
+    description?: string;
+    visitIncludes?: string[];
+    timeline?: { title: string; duration: string | null; description: string }[];
+    preparation?: string[];
+  };
   /**
    * Sofia chatbot intake fields (mapped to Acuity custom fields).
    * Independent from the on-page BookingForm which fetches fields live from acuity-forms.
