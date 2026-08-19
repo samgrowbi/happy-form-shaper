@@ -3,6 +3,7 @@ import yelpLogo from "@/assets/yelp-logo.webp";
 import trustpilotLogo from "@/assets/trustpilot-logo.webp";
 const aboutHero = "https://www.pearl-aesthetics-tx.com/assets/ems-about-treatment-DdHLPuDw.png";
 
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useTreatment } from "@/context/TreatmentContext";
 import { BRAND_NAME, BUSINESS_CITY } from "@/config/brand";
@@ -12,13 +13,50 @@ interface AboutProps {
   onBookingClick: () => void;
 }
 
-const ABOUT_VIDEO = "https://Growbi.b-cdn.net/Lovable/V9.mp4";
+const ABOUT_VIDEO = "/media/about-video.mp4";
+const ABOUT_POSTER = "/media/about-poster.jpg";
+
+function AboutVideo({ className }: { className: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [load, setLoad] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || load) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setLoad(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "200px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [load]);
+
+  return (
+    <video
+      ref={ref}
+      src={load ? ABOUT_VIDEO : undefined}
+      poster={ABOUT_POSTER}
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="none"
+      className={className}
+    />
+  );
+}
 
 export function About({ onBookingClick }: AboutProps) {
   const treatment = useTreatment();
   const slug = treatment?.slug ?? "";
   const isBody = slug.includes("ems") || slug.includes("body");
   const useVideo = !isBody;
+
 
 
   return (
