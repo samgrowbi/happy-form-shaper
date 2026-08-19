@@ -1,4 +1,8 @@
 import treatmentImage from "@/assets/treatment-facial.webp";
+import stepConsultationImg from "@/assets/thankyou/consultation.webp";
+import stepPreparationImg from "@/assets/thankyou/skin-preparation.webp";
+import stepSessionImg from "@/assets/thankyou/treatment-session.webp";
+import stepPostCareImg from "@/assets/thankyou/post-treatment-care.webp";
 import bodyConsultationImg from "@/assets/body-consultation.webp";
 import bodyPreparationImg from "@/assets/body-preparation.webp";
 import bodySessionImg from "@/assets/body-session.webp";
@@ -491,18 +495,22 @@ export const FACIAL_CRYO_TREATMENT: TreatmentConfig = {
     {
       title: "Consultation & Skin Analysis",
       description: "A brief, personalized assessment to understand your skin concerns and treatment goals.",
+      image: stepConsultationImg,
     },
     {
       title: "Expert Skin Preparation",
       description: "Your skin is gently cleansed and prepped so the cooling reaches the skin evenly.",
+      image: stepPreparationImg,
     },
     {
       title: "Facial Cryotherapy Session",
       description: "Controlled cooling is guided across the face and neck to depuff, tighten, and refresh the skin.",
+      image: stepSessionImg,
     },
     {
       title: "Post-Treatment Care & Guidance",
       description: "Soothing skincare is applied, along with clear aftercare guidance to support optimal results.",
+      image: stepPostCareImg,
     },
   ],
   clientReviews: [
