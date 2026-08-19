@@ -112,6 +112,7 @@ export default function ThankYou() {
                   "instant-lift": "/",
                   "led-cryo": "/led-cryo",
                   "ems": "/ems",
+                  "facial-cryotherapy": "/facial-cryotherapy",
                 };
                 navigate(slugToPath[treatmentConfig.slug] ?? (treatmentConfig.slug ? `/book/${treatmentConfig.slug}` : "/"));
               }}

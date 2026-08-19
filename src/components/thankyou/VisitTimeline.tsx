@@ -49,7 +49,7 @@ const bodySteps = [
 
 export function VisitTimeline() {
   const treatment = useTreatment();
-  const steps = treatment.slug === "ems" ? bodySteps : defaultSteps;
+  const steps = treatment.thankYou?.timeline ?? (treatment.slug === "ems" ? bodySteps : defaultSteps);
 
   return (
     <section className="py-12 md:py-16 bg-gray-50">
