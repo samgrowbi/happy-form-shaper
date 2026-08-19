@@ -13,7 +13,12 @@ export function useBookingNavigation() {
       path: typeof window !== "undefined" ? window.location.pathname : undefined,
     });
     // LED is the primary treatment and lives at /book; other treatments keep /book/<slug>.
+    if (treatment.slug === "led-page") {
+      navigate("/bookled");
+      return;
+    }
     navigate(treatment.slug === "led" ? "/book" : `/book/${treatment.slug}`);
+
   };
 
   return { openBooking };

@@ -15,6 +15,9 @@ import BookFacialCryotherapy from "./pages/BookFacialCryotherapy";
 import SkinSpecialistChat from "./components/chat/SkinSpecialistChat";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
+import LedPage from "./pages/LedPage";
+import BookLedPage from "./pages/BookLedPage";
+
 
 const queryClient = new QueryClient();
 
@@ -27,7 +30,9 @@ const App = () => (
         <Routes>
           {/* Homepage renders the LED (Non-Surgical Face & Neck Lift) treatment */}
           <Route path="/" element={<Index />} />
-          <Route path="/led" element={<Index />} />
+          <Route path="/led" element={<LedPage />} />
+          <Route path="/bookled" element={<BookLedPage />} />
+
           {/* Body Cavitation (EMS) */}
           <Route path="/ems" element={<BodySculpting />} />
           <Route path="/body-sculpting" element={<Navigate to="/ems" replace />} />
