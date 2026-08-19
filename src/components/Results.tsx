@@ -8,8 +8,6 @@ import faceCatherineBefore from "@/assets/before-after/face_catherine_before.web
 import faceCatherineAfter from "@/assets/before-after/face_catherine_after.webp.asset.json";
 import faceMargaretBefore from "@/assets/before-after/face_margaret_before.webp.asset.json";
 import faceMargaretAfter from "@/assets/before-after/face_margaret_after.webp.asset.json";
-import faceElaineBefore from "@/assets/before-after/face_elaine_before.webp.asset.json";
-import faceElaineAfter from "@/assets/before-after/face_elaine_after.webp.asset.json";
 import faceBriannaBefore from "@/assets/before-after/face_brianna_before.webp.asset.json";
 import faceBriannaAfter from "@/assets/before-after/face_brianna_after.webp.asset.json";
 import faceVanessaBefore from "@/assets/before-after/face_vanessa_before.webp.asset.json";
@@ -44,7 +42,7 @@ const defaultResults = [
 
   { id: 11, before: faceCatherineBefore.url, after: faceCatherineAfter.url, label: "Skin Rejuvenation", name: "Catherine", age: 54 },
   { id: 12, before: faceMargaretBefore.url, after: faceMargaretAfter.url, label: "Facial Lifting", name: "Margaret", age: 57 },
-  { id: 13, before: faceElaineBefore.url, after: faceElaineAfter.url, label: "Wrinkle Reduction", name: "Elaine", age: 62 },
+  
   { id: 14, before: faceBriannaBefore.url, after: faceBriannaAfter.url, label: "Skin Tightening", name: "Brianna", age: 34 },
   { id: 15, before: faceVanessaBefore.url, after: faceVanessaAfter.url, label: "Skin Rejuvenation", name: "Vanessa", age: 49 },
   { id: 16, before: faceRosalindBefore.url, after: faceRosalindAfter.url, label: "Neck Rejuvenation", name: "Rosalind", age: 63 },
