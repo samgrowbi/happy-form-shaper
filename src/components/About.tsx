@@ -1,7 +1,6 @@
 import googleMapsLogo from "@/assets/google-maps-logo.webp";
 import yelpLogo from "@/assets/yelp-logo.webp";
 import trustpilotLogo from "@/assets/trustpilot-logo.webp";
-const aboutHero = "https://www.pearl-aesthetics-tx.com/assets/ems-about-treatment-DdHLPuDw.png";
 
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -15,8 +14,10 @@ interface AboutProps {
 
 const ABOUT_VIDEO = "/media/about-video.mp4";
 const ABOUT_POSTER = "/media/about-poster.jpg";
+const EMS_ABOUT_VIDEO = "/media/ems-about-video.mp4";
+const EMS_ABOUT_POSTER = "/media/ems-about-poster.jpg";
 
-function AboutVideo({ className }: { className: string }) {
+function AboutVideo({ className, src, poster }: { className: string; src: string; poster: string }) {
   const ref = useRef<HTMLVideoElement>(null);
   const [load, setLoad] = useState(false);
 
@@ -39,8 +40,8 @@ function AboutVideo({ className }: { className: string }) {
   return (
     <video
       ref={ref}
-      src={load ? ABOUT_VIDEO : undefined}
-      poster={ABOUT_POSTER}
+      src={load ? src : undefined}
+      poster={poster}
       autoPlay
       loop
       muted
@@ -55,7 +56,8 @@ export function About({ onBookingClick }: AboutProps) {
   const treatment = useTreatment();
   const slug = treatment?.slug ?? "";
   const isBody = slug.includes("ems") || slug.includes("body");
-  const useVideo = !isBody;
+  const videoSrc = isBody ? EMS_ABOUT_VIDEO : ABOUT_VIDEO;
+  const videoPoster = isBody ? EMS_ABOUT_POSTER : ABOUT_POSTER;
 
 
 
@@ -70,17 +72,7 @@ export function About({ onBookingClick }: AboutProps) {
           {/* Video Section — Desktop Only, height driven by text */}
           <div className="hidden lg:block w-full lg:w-1/2 relative self-stretch">
             <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl shadow-blue-100/50 border border-blue-100/60 group">
-              {useVideo ? (
-                <AboutVideo className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-
-              ) : (
-                <img
-                  src={aboutHero}
-                  alt="Facial treatment"
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                />
-              )}
+              <AboutVideo src={videoSrc} poster={videoPoster} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
 
               <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-transparent pointer-events-none" />
             </div>
@@ -104,17 +96,7 @@ export function About({ onBookingClick }: AboutProps) {
             {/* Video Section — Mobile Only */}
             <div className="block lg:hidden w-full relative">
               <div className="relative rounded-2xl overflow-hidden shadow-xl shadow-blue-100/50 border border-blue-100/60 group">
-                {useVideo ? (
-                  <AboutVideo className="w-full aspect-[9/16] max-h-[400px] object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
-
-                ) : (
-                  <img
-                    src={aboutHero}
-                    alt="Facial treatment"
-                    loading="lazy"
-                    className="w-full object-contain transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
-                )}
+                <AboutVideo src={videoSrc} poster={videoPoster} className="w-full aspect-[9/16] max-h-[400px] object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-black/5 to-transparent pointer-events-none" />
               </div>
