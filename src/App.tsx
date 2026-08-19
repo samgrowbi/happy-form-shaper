@@ -31,6 +31,9 @@ const App = () => (
           {/* Body Cavitation (EMS) */}
           <Route path="/ems" element={<BodySculpting />} />
           <Route path="/body-sculpting" element={<Navigate to="/ems" replace />} />
+          {/* Facial Cryotherapy */}
+          <Route path="/facial-cryotherapy" element={<FacialCryotherapy />} />
+
 
           {/* Booking routes */}
           <Route path="/book" element={<BookLed />} />
