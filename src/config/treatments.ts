@@ -599,3 +599,10 @@ export const FACIAL_CRYO_TREATMENT: TreatmentConfig = {
     },
   ],
 };
+
+// Standalone LED page (/led) - duplicate of the homepage LED treatment with its own appointment type
+export const LED_PAGE_TREATMENT: TreatmentConfig = {
+  ...LED_TREATMENT,
+  slug: "led-page",
+  appointmentTypeId: "97010057",
+};
