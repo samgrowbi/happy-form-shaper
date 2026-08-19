@@ -8,8 +8,6 @@ import faceCatherineBefore from "@/assets/before-after/face_catherine_before.web
 import faceCatherineAfter from "@/assets/before-after/face_catherine_after.webp.asset.json";
 import faceMargaretBefore from "@/assets/before-after/face_margaret_before.webp.asset.json";
 import faceMargaretAfter from "@/assets/before-after/face_margaret_after.webp.asset.json";
-import faceElaineBefore from "@/assets/before-after/face_elaine_before.webp.asset.json";
-import faceElaineAfter from "@/assets/before-after/face_elaine_after.webp.asset.json";
 import faceBriannaBefore from "@/assets/before-after/face_brianna_before.webp.asset.json";
 import faceBriannaAfter from "@/assets/before-after/face_brianna_after.webp.asset.json";
 import faceVanessaBefore from "@/assets/before-after/face_vanessa_before.webp.asset.json";
