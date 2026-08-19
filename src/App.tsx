@@ -10,6 +10,8 @@ import ThankYou from "./pages/ThankYou";
 import BookLed from "./pages/BookLed";
 import BookBodySculpting from "./pages/BookBodySculpting";
 import BodySculpting from "./pages/BodySculpting";
+import FacialCryotherapy from "./pages/FacialCryotherapy";
+import BookFacialCryotherapy from "./pages/BookFacialCryotherapy";
 import SkinSpecialistChat from "./components/chat/SkinSpecialistChat";
 import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
@@ -29,12 +31,16 @@ const App = () => (
           {/* Body Cavitation (EMS) */}
           <Route path="/ems" element={<BodySculpting />} />
           <Route path="/body-sculpting" element={<Navigate to="/ems" replace />} />
+          {/* Facial Cryotherapy */}
+          <Route path="/facial-cryotherapy" element={<FacialCryotherapy />} />
+
 
           {/* Booking routes */}
           <Route path="/book" element={<BookLed />} />
           <Route path="/book/led" element={<Navigate to="/book" replace />} />
           <Route path="/book/ems" element={<BookBodySculpting />} />
           <Route path="/book/body-sculpting" element={<Navigate to="/book/ems" replace />} />
+          <Route path="/book/facial-cryotherapy" element={<BookFacialCryotherapy />} />
 
           {/* Legacy routes redirect home */}
           <Route path="/instant-lift" element={<Navigate to="/" replace />} />

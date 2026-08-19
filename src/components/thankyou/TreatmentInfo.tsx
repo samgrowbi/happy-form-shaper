@@ -22,7 +22,11 @@ const treatmentDescriptions: Record<string, { noteLine: string; description: str
 };
 
 function getTreatmentInfo(treatment: ReturnType<typeof useTreatment>) {
-  return treatmentDescriptions[treatment.slug] || treatmentDescriptions["led"];
+  const base = treatmentDescriptions[treatment.slug] || treatmentDescriptions["led"];
+  return {
+    noteLine: treatment.thankYou?.noteLine ?? base.noteLine,
+    description: treatment.thankYou?.description ?? base.description,
+  };
 }
 
 export function TreatmentInfo() {

@@ -1,8 +1,9 @@
 import { motion, type Variants } from "motion/react";
 import { AccentWord } from "./ui/AccentWord";
 import { Waves, ArrowDownToLine, Sun, CloudMoon, Droplets, CircleDot } from "lucide-react";
+import { useTreatment } from "@/context/TreatmentContext";
 
-const concerns = [
+const defaultConcerns = [
   { text: "Wrinkles & Fine Lines", icon: Waves },
   { text: "Loss of Firmness & Sagging", icon: ArrowDownToLine },
   { text: "Uneven Skin Tone & Pigmentation", icon: Sun },
@@ -10,6 +11,10 @@ const concerns = [
   { text: "Redness & Skin Irritation", icon: Droplets },
   { text: "Enlarged Pores & Rough Texture", icon: CircleDot },
 ];
+
+const iconCycle = [Waves, ArrowDownToLine, Sun, CloudMoon, Droplets, CircleDot];
+
+const defaultSubtitle = "Anyone over 35 experiencing visible signs of skin aging";
 
 const containerVariants: Variants = {
   hidden: {},
@@ -29,6 +34,13 @@ const cardVariants: Variants = {
 };
 
 export function WhoIsThisFor() {
+  const treatment = useTreatment();
+  const override = treatment.whoIsThisFor;
+  const concerns = override
+    ? override.concerns.map((text, i) => ({ text, icon: iconCycle[i % iconCycle.length] }))
+    : defaultConcerns;
+  const subtitle = override?.subtitle ?? defaultSubtitle;
+
   return (
     <section className="py-6 md:py-8 lg:py-16 bg-gradient-to-b from-white via-blue-50/30 to-white" dir="ltr">
       <div className="container mx-auto px-5">
@@ -46,7 +58,7 @@ export function WhoIsThisFor() {
             Who Is This <AccentWord>For?</AccentWord>
           </h2>
           <p className="text-gray-500 text-base md:text-lg lg:text-xl mt-3 lg:mt-5 max-w-2xl mx-auto font-light">
-            Anyone over 35 experiencing visible signs of skin aging
+            {subtitle}
           </p>
         </motion.div>
 

@@ -20,7 +20,7 @@ const bodyBenefits = [
 export function WhyShowingUpMatters() {
   const treatment = useTreatment();
   const isBody = bodySlugs.has(treatment.slug);
-  const benefits = isBody ? bodyBenefits : facialBenefits;
+  const benefits = treatment.thankYou?.visitIncludes ?? (isBody ? bodyBenefits : facialBenefits);
   const imageSrc = isBody ? emsConsultationAsset.url : consultationImage;
 
   return (

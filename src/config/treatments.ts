@@ -79,6 +79,25 @@ export interface TreatmentConfig {
     badgeText: string;
     emotionalClose?: { text: string; highlight: string };
   };
+  /** "Who Is This For?" section overrides (falls back to the default facial concerns) */
+  whoIsThisFor?: {
+    subtitle?: string;
+    concerns: string[];
+  };
+  /** "Feel Comfortable In Your Skin" section overrides */
+  feelComfortable?: {
+    problemCopy: string;
+    bridgeLine?: { text: string; highlight: string };
+    benefits: { title: string; description: string }[];
+  };
+  /** Thank-you page copy overrides */
+  thankYou?: {
+    noteLine?: string;
+    description?: string;
+    visitIncludes?: string[];
+    timeline?: { title: string; duration: string | null; description: string }[];
+    preparation?: string[];
+  };
   /**
    * Sofia chatbot intake fields (mapped to Acuity custom fields).
    * Independent from the on-page BookingForm which fetches fields live from acuity-forms.
@@ -407,5 +426,176 @@ export const INSTANT_LIFT_TREATMENT: TreatmentConfig = {
   duration: 60,
   technologyDescription: [
     "Our Instant Lift & Skin Tightening treatment delivers specific wavelengths of light energy into the skin's deeper layers, activating the body's own natural healing process of collagen production and cellular repair. The facial is entirely non-invasive, without heat, injectables, or foreign substances.",
+  ],
+};
+
+// Facial Cryotherapy - standalone treatment page (/facial-cryotherapy)
+export const FACIAL_CRYO_TREATMENT: TreatmentConfig = {
+  slug: "facial-cryotherapy",
+  label: "Facial Cryotherapy Treatment",
+  heroTitle: {
+    line1: "Facial",
+    highlight: "Cryotherapy",
+    line2: "Treatment",
+  },
+  heroSubtitle: "No Surgery. No Pain. Zero Downtime.",
+  heroVideoUrl:
+    "https://growbi.b-cdn.net/Hero%20Video/Takkra%20LED%20Video%201%20(Model%201)%20Horizontal.mp4",
+  price: "79.99",
+  originalPrice: "399.99",
+  appointmentTypeId: "97274146",
+  calendarId: "13553882",
+  duration: 60,
+  image: treatmentImage,
+  technologyTitle: { main: "Advanced Facial Cryotherapy for", highlight: "Visible Results" },
+  technologyDescription: [
+    "Our Facial Cryotherapy treatment uses controlled cooling to instantly tighten the skin, calm inflammation, and stimulate circulation across the face and neck. The sudden drop in temperature triggers your body's natural response, sending fresh, oxygen-rich blood to the surface for an immediate lift and glow.",
+    "The treatment is entirely non-invasive, with no heat, injectables, or foreign substances, and no downtime afterwards.",
+  ],
+  technologyHighlights: [
+    { text: "Clinically tested" },
+    { text: "Safe for all skin types and tones" },
+  ],
+  hideDeviceImage: true,
+  whoIsThisFor: {
+    subtitle: "Anyone looking to depuff, tighten, and refresh their skin instantly",
+    concerns: [
+      "Puffiness & Facial Swelling",
+      "Loss of Firmness & Sagging",
+      "Dull or Tired-Looking Complexion",
+      "Redness & Skin Irritation",
+      "Enlarged Pores & Rough Texture",
+      "Under-Eye Puffiness & Dark Circles",
+    ],
+  },
+  feelComfortable: {
+    problemCopy:
+      "Skin that looks puffy, tired, and dull isn't always about age. Poor circulation, inflammation, and everyday stress leave the face swollen and lacking definition, and no cream can cool and reset the skin the way controlled cryotherapy can.",
+    bridgeLine: { text: "Your skin needs a reset.", highlight: "Cryotherapy delivers it." },
+    benefits: [
+      {
+        title: "Depuffs & Defines Instantly",
+        description: "Controlled cooling reduces swelling for a sharper jawline and brighter eyes",
+      },
+      {
+        title: "Tightens & Firms The Skin",
+        description: "Cold therapy contracts pores and boosts firmness for a lifted look",
+      },
+      {
+        title: "Calms Redness & Boosts Glow",
+        description: "Soothes irritation and drives circulation for a healthy, natural radiance",
+      },
+    ],
+  },
+  visitSteps: [
+    {
+      title: "Consultation & Skin Analysis",
+      description: "A brief, personalized assessment to understand your skin concerns and treatment goals.",
+    },
+    {
+      title: "Expert Skin Preparation",
+      description: "Your skin is gently cleansed and prepped so the cooling reaches the skin evenly.",
+    },
+    {
+      title: "Facial Cryotherapy Session",
+      description: "Controlled cooling is guided across the face and neck to depuff, tighten, and refresh the skin.",
+    },
+    {
+      title: "Post-Treatment Care & Guidance",
+      description: "Soothing skincare is applied, along with clear aftercare guidance to support optimal results.",
+    },
+  ],
+  clientReviews: [
+    { id: 1, name: "Isabella Rodriguez", image: "https://randomuser.me/api/portraits/women/44.jpg", timeAgo: "AUG 2, 2026", rating: 5, review: "I booked the cryo facial before a wedding and honestly my face has never looked this snatched. The puffiness was gone within minutes and my makeup sat so much better." },
+    { id: 2, name: "Sarah Mitchell", image: "https://randomuser.me/api/portraits/women/68.jpg", timeAgo: "JUL 29, 2026", rating: 5, review: "The cold sounds scary but it's actually so refreshing. My jawline looks more defined and the redness on my cheeks calmed right down. Booking again next month." },
+    { id: 3, name: "Gabriela Santos", image: "https://randomuser.me/api/portraits/women/33.jpg", timeAgo: "AUG 9, 2026", rating: 5, review: "My skin is super sensitive and this was the first treatment that didn't leave me irritated. Just calm, tight, glowy skin. I was genuinely shocked." },
+    { id: 4, name: "Amanda Rose", image: "https://randomuser.me/api/portraits/women/85.jpg", timeAgo: "JUL 24, 2026", rating: 5, review: "I wake up puffy every single morning. After the cryotherapy session my under eyes looked so much brighter and it lasted for days." },
+    { id: 5, name: "Carolina Herrera", image: "https://randomuser.me/api/portraits/women/91.jpg", timeAgo: "AUG 6, 2026", rating: 5, review: "60 minutes of pure relaxation and I walked out looking like I'd slept 10 hours. My pores look smaller too. Worth every penny." },
+    { id: 6, name: "Rachel Johnson", image: "https://randomuser.me/api/portraits/women/26.jpg", timeAgo: "AUG 12, 2026", rating: 5, review: "I've done facials for years and nothing gave me this instant lift. My skin felt firm and tight straight away with zero downtime." },
+    { id: 7, name: "Valentina Cruz", image: "https://randomuser.me/api/portraits/women/17.jpg", timeAgo: "JUL 27, 2026", rating: 5, review: "The cryo really helped my breakouts settle. Less inflammation, less redness, and my texture is smoother than it's been in ages." },
+    { id: 8, name: "Diana Miller", image: "https://randomuser.me/api/portraits/women/63.jpg", timeAgo: "AUG 4, 2026", rating: 5, review: "Such a calming experience and the results were immediate. My cheeks looked lifted and my whole face just looked awake again." },
+    { id: 9, name: "Sofia Morales", image: "https://randomuser.me/api/portraits/women/79.jpg", timeAgo: "AUG 14, 2026", rating: 5, review: "Total skeptic here. But my face looked visibly tighter the second I got off the bed, and my friends kept asking what I'd had done." },
+  ],
+  thankYou: {
+    noteLine:
+      "It is a real, results-driven treatment performed by trained professionals who specialize in advanced skincare technology.",
+    description:
+      "Our Facial Cryotherapy treatment uses controlled cooling to depuff, tighten, and calm the skin, boosting circulation for an immediate lift and a natural, healthy glow.",
+    visitIncludes: [
+      "A professional consultation",
+      "A customized facial cryotherapy session",
+      "Personalized recommendations based on your goals",
+    ],
+    timeline: [
+      { title: "Check-In", duration: "5 minutes", description: "Confirm your goals and medical intake." },
+      { title: "Professional Consultation", duration: "10-15 minutes", description: "We assess your skin and explain exactly how facial cryotherapy works." },
+      { title: "Facial Cryotherapy Session", duration: null, description: "Comfortable, non-invasive, and guided by a specialist." },
+      { title: "Optional Next Steps", duration: null, description: "Only if you want to enhance or extend your results." },
+    ],
+    preparation: [
+      "Arrive 5-10 minutes early",
+      "Stay hydrated",
+      "Come with a clean face where possible, makeup can be removed on arrival",
+      "Avoid heavy lotions on the treatment area",
+      "Bring any questions you may have",
+    ],
+  },
+  faqs: [
+    {
+      question: "Who is this treatment for?",
+      answer:
+        "Facial Cryotherapy suits anyone wanting to depuff, tighten, and refresh their skin. It is especially effective for puffiness, dullness, redness, enlarged pores, and skin that has lost its firmness. It is non-invasive, requires no downtime, and is safe for all skin types and tones.",
+    },
+    {
+      question: "How does it work?",
+      answer:
+        "Controlled cooling is guided across the face and neck. The drop in temperature constricts blood vessels and then triggers a rush of fresh, oxygen-rich blood to the surface. That process reduces swelling and inflammation, tightens the skin, and leaves the complexion firmer and brighter.",
+    },
+    {
+      question: "Is it painful?",
+      answer:
+        "Not at all. Most clients describe it as a refreshing, invigorating cool sensation. The temperature is carefully controlled throughout and your esthetician will adjust to keep you comfortable.",
+    },
+    {
+      question: "Is it safe?",
+      answer:
+        "Yes. The treatment is non-invasive, uses no injectables or foreign substances, and is safe for all skin types and tones. If you have a specific medical condition, such as cold sensitivity or Raynaud's, let us know before your visit and our esthetician will advise you.",
+    },
+    {
+      question: "How long is the treatment?",
+      answer:
+        "Each session takes approximately 60 minutes. We recommend arriving a few minutes early for your first visit.",
+    },
+    {
+      question: "When will I see results?",
+      answer:
+        "Results are immediate. Most clients leave with visibly depuffed, tighter, brighter skin straight after the first session. With a course of sessions, firmness and tone continue to improve.",
+    },
+    {
+      question: "How long do results last?",
+      answer:
+        "The instant lift and depuffing typically lasts several days. For longer lasting firmness and tone, a course of treatments is recommended. Your esthetician will advise on the best plan for your skin at your first visit.",
+    },
+    {
+      question: "What happens after the treatment?",
+      answer:
+        "You can return to your normal routine immediately, including makeup, work, and exercise. There is no downtime and no redness to manage. Your esthetician will provide simple aftercare guidance at the end of your visit.",
+    },
+  ],
+  intakeFields: [
+    {
+      acuityFieldId: 18044945,
+      label: "I agree to the promotional cancellation policy",
+      type: "yesno",
+      required: true,
+      helpText:
+        "Promotional appointments can be rescheduled once, at least 24 hours in advance. No-shows or late reschedules forfeit the promo.",
+    },
+    {
+      acuityFieldId: 18044951,
+      label: "I agree to receive SMS + email appointment reminders",
+      type: "yesno",
+      required: true,
+    },
   ],
 };

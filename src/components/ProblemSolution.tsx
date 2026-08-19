@@ -3,10 +3,11 @@ import iconFineLines from "@/assets/icons/icon-fine-lines.webp";
 import iconFirmness from "@/assets/icons/icon-firmness.webp";
 import iconSoothe from "@/assets/icons/icon-soothe.webp";
 import { AccentWord } from "./ui/AccentWord";
+import { useTreatment } from "@/context/TreatmentContext";
 
 const benefitIcons = [iconFineLines, iconFirmness, iconSoothe];
 
-const benefits = [
+const defaultBenefits = [
   {
     title: "Reduces Fine Lines & Wrinkles",
     description: "Boosts collagen for smoother skin and a fresh complexion",
@@ -21,11 +22,17 @@ const benefits = [
   },
 ];
 
-const problemCopy = `As skin matures, it loses the collagen and elasticity that keep it firm, smooth, and radiant. Fine lines deepen. Skin loses its lift. Your complexion looks tired even when you're not. These aren't signs of neglect, they're biology. And no moisturiser or serum is going to reverse that on its own.`;
+const defaultProblemCopy = `As skin matures, it loses the collagen and elasticity that keep it firm, smooth, and radiant. Fine lines deepen. Skin loses its lift. Your complexion looks tired even when you're not. These aren't signs of neglect, they're biology. And no moisturiser or serum is going to reverse that on its own.`;
 
-const bridgeLine = { text: "Your skin has changed.", highlight: "Your treatment should too." };
+const defaultBridgeLine = { text: "Your skin has changed.", highlight: "Your treatment should too." };
 
 export function ProblemSolution() {
+  const treatment = useTreatment();
+  const override = treatment.feelComfortable;
+  const benefits = override?.benefits ?? defaultBenefits;
+  const problemCopy = override?.problemCopy ?? defaultProblemCopy;
+  const bridgeLine = override?.bridgeLine ?? defaultBridgeLine;
+
   return (
     <section className="py-4 md:py-8 lg:py-16 bg-white" dir="ltr">
       <div className="container mx-auto px-5">

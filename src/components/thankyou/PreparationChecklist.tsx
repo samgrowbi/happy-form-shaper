@@ -19,7 +19,7 @@ const bodyChecklist = [
 
 export function PreparationChecklist() {
   const treatment = useTreatment();
-  const items = treatment.slug === "ems" ? bodyChecklist : facialChecklist;
+  const items = treatment.thankYou?.preparation ?? (treatment.slug === "ems" ? bodyChecklist : facialChecklist);
 
   return (
     <section className="py-12 md:py-16 bg-white">
