@@ -58,7 +58,7 @@ export function WhoIsThisFor() {
             Who Is This <AccentWord>For?</AccentWord>
           </h2>
           <p className="text-gray-500 text-base md:text-lg lg:text-xl mt-3 lg:mt-5 max-w-2xl mx-auto font-light">
-            Anyone over 35 experiencing visible signs of skin aging
+            {subtitle}
           </p>
         </motion.div>
 
