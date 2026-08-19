@@ -71,15 +71,8 @@ export function About({ onBookingClick }: AboutProps) {
           <div className="hidden lg:block w-full lg:w-1/2 relative self-stretch">
             <div className="absolute inset-0 rounded-2xl overflow-hidden shadow-xl shadow-blue-100/50 border border-blue-100/60 group">
               {useVideo ? (
-                <video
-                  src={ABOUT_VIDEO}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  preload="none"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                />
+                <AboutVideo className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]" />
+
               ) : (
                 <img
                   src={aboutHero}
