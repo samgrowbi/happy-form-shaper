@@ -40,6 +40,7 @@ const App = () => (
           <Route path="/book/led" element={<Navigate to="/book" replace />} />
           <Route path="/book/ems" element={<BookBodySculpting />} />
           <Route path="/book/body-sculpting" element={<Navigate to="/book/ems" replace />} />
+          <Route path="/book/facial-cryotherapy" element={<BookFacialCryotherapy />} />
 
           {/* Legacy routes redirect home */}
           <Route path="/instant-lift" element={<Navigate to="/" replace />} />
