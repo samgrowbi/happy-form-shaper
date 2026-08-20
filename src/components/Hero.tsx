@@ -2,9 +2,17 @@ import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRef, useEffect } from "react";
+import Hls from "hls.js";
 import { useTreatment } from "@/context/TreatmentContext";
 import { DEFAULT_ACUITY_APPOINTMENT_TYPE_ID } from "@/config/acuity";
 import { AccentWord } from "./ui/AccentWord";
+
+/** Cloudflare Stream auto-thumbnail for an HLS manifest URL */
+const cfPoster = (url: string) =>
+  url.endsWith(".m3u8")
+    ? url.replace("/manifest/video.m3u8", "/thumbnails/thumbnail.jpg?time=1s&height=1080")
+    : undefined;
+
 
 interface HeroProps {
   onBookingClick: () => void;
