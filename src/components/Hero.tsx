@@ -146,6 +146,7 @@ export function Hero({ onBookingClick }: HeroProps) {
       {/* Background Video */}
       <div ref={videoContainerRef} className="absolute inset-0 w-full h-full overflow-hidden">
         <video
+          ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
           loop
@@ -153,11 +154,12 @@ export function Hero({ onBookingClick }: HeroProps) {
           playsInline
           // @ts-ignore
           webkit-playsinline="true"
-          preload="metadata"
+          preload="auto"
+          poster={cfPoster(src)}
           // @ts-ignore
           fetchpriority="high"
-          src={treatment.heroVideoUrl}
         />
+
         <div className="absolute inset-0 bg-black/[0.15] backdrop-blur-[1px]" />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-black/20 to-gray-950/80 motion-safe:animate-ken-burns" />
       </div>
