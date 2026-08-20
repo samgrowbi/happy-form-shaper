@@ -297,7 +297,7 @@ export const BODY_SCULPTING_TREATMENT: TreatmentConfig = {
   heroSubtitle:
     "Experience the revolutionary body cavitation technology that tones muscles and reduces fat instantly without any downtime.",
   heroVideoUrl:
-    "https://growbi.b-cdn.net/Hero%20Video/Takkra%20Body%20Sculpting.mp4",
+    "https://customer-vgdtdepv6dn1f10z.cloudflarestream.com/542c31111170319f17c101be4f11a218/manifest/video.m3u8",
   price: "79.99",
   originalPrice: "599.99",
   appointmentTypeId: "89277707",
