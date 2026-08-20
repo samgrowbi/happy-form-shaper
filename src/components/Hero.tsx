@@ -2,9 +2,17 @@ import { Button } from "./ui/button";
 import { motion } from "motion/react";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRef, useEffect } from "react";
+import Hls from "hls.js";
 import { useTreatment } from "@/context/TreatmentContext";
 import { DEFAULT_ACUITY_APPOINTMENT_TYPE_ID } from "@/config/acuity";
 import { AccentWord } from "./ui/AccentWord";
+
+/** Cloudflare Stream auto-thumbnail for an HLS manifest URL */
+const cfPoster = (url: string) =>
+  url.endsWith(".m3u8")
+    ? url.replace("/manifest/video.m3u8", "/thumbnails/thumbnail.jpg?time=1s&height=1080")
+    : undefined;
+
 
 interface HeroProps {
   onBookingClick: () => void;
@@ -32,6 +40,32 @@ export function Hero({ onBookingClick }: HeroProps) {
       (playPromise as Promise<void>).catch(() => {});
     }
   };
+
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const hlsRef = useRef<Hls | null>(null);
+  const src = treatment.heroVideoUrl;
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (src.endsWith(".m3u8")) {
+      if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = src;
+      } else if (Hls.isSupported()) {
+        const hls = new Hls({ enableWorker: true, lowLatencyMode: false });
+        hls.loadSource(src);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => attemptPlay());
+        hlsRef.current = hls;
+      }
+    } else {
+      video.src = src;
+    }
+    return () => {
+      hlsRef.current?.destroy();
+      hlsRef.current = null;
+    };
+  }, [src]);
 
   useEffect(() => {
     attemptPlay();
@@ -112,6 +146,7 @@ export function Hero({ onBookingClick }: HeroProps) {
       {/* Background Video */}
       <div ref={videoContainerRef} className="absolute inset-0 w-full h-full overflow-hidden">
         <video
+          ref={videoRef}
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
           loop
@@ -119,11 +154,12 @@ export function Hero({ onBookingClick }: HeroProps) {
           playsInline
           // @ts-ignore
           webkit-playsinline="true"
-          preload="metadata"
+          preload="auto"
+          poster={cfPoster(src)}
           // @ts-ignore
           fetchpriority="high"
-          src={treatment.heroVideoUrl}
         />
+
         <div className="absolute inset-0 bg-black/[0.15] backdrop-blur-[1px]" />
         <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-black/20 to-gray-950/80 motion-safe:animate-ken-burns" />
       </div>
