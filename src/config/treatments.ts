@@ -299,7 +299,7 @@ export const BODY_SCULPTING_TREATMENT: TreatmentConfig = {
   heroVideoUrl:
     "https://growbi.b-cdn.net/Hero%20Video/Takkra%20Body%20Sculpting.mp4",
   price: "79.99",
-  originalPrice: "399.99",
+  originalPrice: "599.99",
   appointmentTypeId: "89277707",
   calendarId: "13553882",
   duration: 60,
