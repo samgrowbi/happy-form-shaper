@@ -41,6 +41,32 @@ export function Hero({ onBookingClick }: HeroProps) {
     }
   };
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const hlsRef = useRef<Hls | null>(null);
+  const src = treatment.heroVideoUrl;
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (src.endsWith(".m3u8")) {
+      if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        video.src = src;
+      } else if (Hls.isSupported()) {
+        const hls = new Hls({ enableWorker: true, lowLatencyMode: false });
+        hls.loadSource(src);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, () => attemptPlay());
+        hlsRef.current = hls;
+      }
+    } else {
+      video.src = src;
+    }
+    return () => {
+      hlsRef.current?.destroy();
+      hlsRef.current = null;
+    };
+  }, [src]);
+
   useEffect(() => {
     attemptPlay();
     window.addEventListener("touchstart", attemptPlay, { passive: true, once: true });
