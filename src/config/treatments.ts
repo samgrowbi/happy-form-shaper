@@ -129,7 +129,7 @@ export const LED_TREATMENT: TreatmentConfig = {
   heroSubtitle:
     "No Surgery. No Pain. Zero Downtime.",
   heroVideoUrl:
-    "https://growbi.b-cdn.net/Hero%20Video/Takkra%20LED%20Video%201%20(Model%201)%20Horizontal.mp4",
+    "https://customer-vgdtdepv6dn1f10z.cloudflarestream.com/03d0b648661d422d782f64fd6d137df5/manifest/video.m3u8",
   price: "69.99",
   originalPrice: "299.99",
   appointmentTypeId: "89238158",
@@ -444,7 +444,7 @@ export const FACIAL_CRYO_TREATMENT: TreatmentConfig = {
   },
   heroSubtitle: "No Surgery. No Pain. Zero Downtime.",
   heroVideoUrl:
-    "https://growbi.b-cdn.net/Hero%20Video/Takkra%20LED%20Video%201%20(Model%201)%20Horizontal.mp4",
+    "https://customer-vgdtdepv6dn1f10z.cloudflarestream.com/03d0b648661d422d782f64fd6d137df5/manifest/video.m3u8",
   price: "79.99",
   originalPrice: "399.99",
   appointmentTypeId: "97274146",
