@@ -17,6 +17,10 @@ import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import LedPage from "./pages/LedPage";
 import BookLedPage from "./pages/BookLedPage";
+import LedV1Page from "./pages/LedV1Page";
+import BookLedV1Page from "./pages/BookLedV1Page";
+
+
 
 
 const queryClient = new QueryClient();
