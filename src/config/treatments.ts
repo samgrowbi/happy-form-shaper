@@ -614,3 +614,10 @@ export const LED_PAGE_TREATMENT: TreatmentConfig = {
   slug: "led-page",
   appointmentTypeId: "97010057",
 };
+
+// Standalone LED V1 page (/ledv1) - duplicate of the homepage LED treatment with its own appointment type
+export const LED_V1_TREATMENT: TreatmentConfig = {
+  ...LED_TREATMENT,
+  slug: "ledv1",
+  appointmentTypeId: "97649435",
+};

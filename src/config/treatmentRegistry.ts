@@ -5,12 +5,14 @@ import {
   INSTANT_LIFT_TREATMENT,
   FACIAL_CRYO_TREATMENT,
   LED_PAGE_TREATMENT,
+  LED_V1_TREATMENT,
   TreatmentConfig,
 } from "./treatments";
 
 const treatments: Record<string, TreatmentConfig> = {
   led: LED_TREATMENT,
   "led-page": LED_PAGE_TREATMENT,
+  ledv1: LED_V1_TREATMENT,
   "instant-lift": INSTANT_LIFT_TREATMENT,
   "led-cryo": LED_CRYO_TREATMENT,
   ems: BODY_SCULPTING_TREATMENT,

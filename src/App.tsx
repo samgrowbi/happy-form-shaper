@@ -17,6 +17,10 @@ import Auth from "./pages/Auth";
 import Admin from "./pages/Admin";
 import LedPage from "./pages/LedPage";
 import BookLedPage from "./pages/BookLedPage";
+import LedV1Page from "./pages/LedV1Page";
+import BookLedV1Page from "./pages/BookLedV1Page";
+
+
 
 
 const queryClient = new QueryClient();
@@ -32,6 +36,9 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/led" element={<LedPage />} />
           <Route path="/bookled" element={<BookLedPage />} />
+          <Route path="/ledv1" element={<LedV1Page />} />
+          <Route path="/bookledv1" element={<BookLedV1Page />} />
+
 
           {/* Body Cavitation (EMS) */}
           <Route path="/ems" element={<BodySculpting />} />

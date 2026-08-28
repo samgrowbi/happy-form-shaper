@@ -17,6 +17,10 @@ export function useBookingNavigation() {
       navigate("/bookled");
       return;
     }
+    if (treatment.slug === "ledv1") {
+      navigate("/bookledv1");
+      return;
+    }
     navigate(treatment.slug === "led" ? "/book" : `/book/${treatment.slug}`);
 
   };
