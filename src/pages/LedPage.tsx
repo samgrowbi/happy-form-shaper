@@ -34,15 +34,15 @@ const LedPageInner = () => {
       <Navbar onBookingClick={openBooking} />
       <main>
         <Hero onBookingClick={openBooking} />
+        <section className="py-2 sm:py-4 bg-white" dir="ltr">
+          <div className="container mx-auto px-4">
+            <InlineBooking />
+          </div>
+        </section>
         <TrustStrip />
         <Suspense fallback={<div className="min-h-[150px]" />}>
           <Results />
           <Feedback />
-          <section className="py-2 sm:py-4 bg-white" dir="ltr">
-            <div className="container mx-auto px-4">
-              <InlineBooking />
-            </div>
-          </section>
           <WhoIsThisFor />
           <ProblemSolution />
           <Technology onBookingClick={openBooking} />
