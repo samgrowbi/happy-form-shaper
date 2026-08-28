@@ -47,7 +47,7 @@ const BookingPage = ({ treatment }: BookingPageProps) => {
         <div className="container mx-auto px-5 pt-3 pb-4">
           {/* Breadcrumb back link */}
           <button
-            onClick={() => navigate(["led-page", "ledv1"].includes(treatment.slug) ? `/${treatment.slug}` : `/${treatment.slug === "led" ? "" : treatment.slug}`)}
+            onClick={() => navigate(treatment.slug === "led-page" ? "/led" : treatment.slug === "ledv1" ? "/ledv1" : `/${treatment.slug === "led" ? "" : treatment.slug}`)}
             className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors mb-2 group"
           >
             <ArrowLeft className="h-3.5 w-3.5 group-hover:-translate-x-0.5 transition-transform" />
