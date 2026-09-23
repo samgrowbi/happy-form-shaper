@@ -4,8 +4,6 @@ import Autoplay from "embla-carousel-autoplay";
 import { BeforeAfterCard } from "./BeforeAfterCard";
 import { useTreatment } from "@/context/TreatmentContext";
 import { AccentWord } from "./ui/AccentWord";
-import faceCatherineBefore from "@/assets/before-after/face_catherine_before.webp.asset.json";
-import faceCatherineAfter from "@/assets/before-after/face_catherine_after.webp.asset.json";
 import faceMargaretBefore from "@/assets/before-after/face_margaret_before.webp.asset.json";
 import faceMargaretAfter from "@/assets/before-after/face_margaret_after.webp.asset.json";
 import faceBriannaBefore from "@/assets/before-after/face_brianna_before.webp.asset.json";
@@ -22,25 +20,20 @@ import a11Before from "@/assets/before-after/a11-before.jpg.asset.json";
 import a11After from "@/assets/before-after/a11-after.jpg.asset.json";
 import a12Before from "@/assets/before-after/a12-before.jpeg.asset.json";
 import a12After from "@/assets/before-after/a12-after.jpeg.asset.json";
-import a3Before from "@/assets/before-after/a3-before.png.asset.json";
-import a3After from "@/assets/before-after/a3-after.png.asset.json";
-import a4Before from "@/assets/before-after/a4-before.png.asset.json";
-import a4After from "@/assets/before-after/a4-after.png.asset.json";
-import a5Before from "@/assets/before-after/a5-before.png.asset.json";
-import a5After from "@/assets/before-after/a5-after.png.asset.json";
-import a6Before from "@/assets/before-after/a6-before.png.asset.json";
-import a6After from "@/assets/before-after/a6-after.png.asset.json";
-import a7Before from "@/assets/before-after/a7-before.png.asset.json";
-import a7After from "@/assets/before-after/a7-after.png.asset.json";
+import resultOne from "@/assets/before-after/new-face/1.png.asset.json";
+import resultTwo from "@/assets/before-after/new-face/2.jpeg.asset.json";
+import resultThree from "@/assets/before-after/new-face/3.png.asset.json";
+import resultFour from "@/assets/before-after/new-face/4.png.asset.json";
+import resultFive from "@/assets/before-after/new-face/5.jpeg.asset.json";
+import resultSix from "@/assets/before-after/new-face/6.png.asset.json";
 
 const defaultResults = [
-  { id: 3, before: a3Before.url, after: a3After.url, label: "Facial Lifting", name: "Maria", age: 61 },
-  { id: 4, before: a4Before.url, after: a4After.url, label: "Skin Rejuvenation", name: "Jennifer", age: 55 },
-  { id: 5, before: a5After.url, after: a5Before.url, label: "Pigmentation", name: "Laura", age: 58 },
-  { id: 6, before: a6After.url, after: a6Before.url, label: "Skin Tightening", name: "Rachel", age: 68 },
-  { id: 7, before: a7Before.url, after: a7After.url, label: "Neck Rejuvenation", name: "Diana", age: 58 },
-
-  { id: 11, before: faceCatherineBefore.url, after: faceCatherineAfter.url, label: "Skin Rejuvenation", name: "Catherine", age: 54 },
+  { id: 3, composite: resultOne.url, label: "Facial Lifting", name: "Maria", age: 61 },
+  { id: 4, composite: resultTwo.url, label: "Skin Rejuvenation", name: "Jennifer", age: 55 },
+  { id: 5, composite: resultThree.url, label: "Pigmentation", name: "Laura", age: 58 },
+  { id: 6, composite: resultFour.url, label: "Skin Tightening", name: "Rachel", age: 68 },
+  { id: 7, composite: resultFive.url, label: "Neck Rejuvenation", name: "Diana", age: 58 },
+  { id: 11, composite: resultSix.url, label: "Skin Rejuvenation", name: "Catherine", age: 54 },
   { id: 12, before: faceMargaretBefore.url, after: faceMargaretAfter.url, label: "Facial Lifting", name: "Margaret", age: 57 },
   
   { id: 14, before: faceBriannaBefore.url, after: faceBriannaAfter.url, label: "Skin Tightening", name: "Brianna", age: 34 },
@@ -59,7 +52,6 @@ export function Results() {
   const treatment = useTreatment();
 
   const treatmentResults = treatment.beforeAfterResults;
-  const isComposite = treatmentResults?.some(r => r.composite);
   const results = treatmentResults || defaultResults;
 
   useEffect(() => {
@@ -118,14 +110,15 @@ export function Results() {
             <CarouselContent className="-ml-6">
               {results.map((item) => (
                 <CarouselItem key={item.id} className="basis-[85%] md:basis-1/2 pl-6">
-                  {isComposite && 'composite' in item && item.composite ? (
+                  {'composite' in item && item.composite ? (
                     <div className="group" dir="ltr">
                       <div className="relative w-full overflow-hidden rounded-2xl shadow-lg bg-white transition-all duration-500 ease-out group-hover:shadow-2xl group-hover:-translate-y-1">
                         <div className="w-full aspect-[4/3] lg:aspect-[3/2] overflow-hidden bg-gray-100">
                           <img
                             src={item.composite}
-                            alt={item.label}
+                            alt={`${item.label} before and after treatment result${'name' in item && item.name ? ` for ${item.name}` : ""}`}
                             loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
                           />
                         </div>
