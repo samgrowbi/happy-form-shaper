@@ -20,20 +20,26 @@ import a11Before from "@/assets/before-after/a11-before.jpg.asset.json";
 import a11After from "@/assets/before-after/a11-after.jpg.asset.json";
 import a12Before from "@/assets/before-after/a12-before.jpeg.asset.json";
 import a12After from "@/assets/before-after/a12-after.jpeg.asset.json";
-import resultOne from "@/assets/before-after/new-face/1.png.asset.json";
-import resultTwo from "@/assets/before-after/new-face/2.jpeg.asset.json";
-import resultThree from "@/assets/before-after/new-face/3.png.asset.json";
-import resultFour from "@/assets/before-after/new-face/4.png.asset.json";
-import resultFive from "@/assets/before-after/new-face/5.jpeg.asset.json";
-import resultSix from "@/assets/before-after/new-face/6.png.asset.json";
+import resultOneBefore from "@/assets/before-after/new-face-halves/face-result-1-before.webp.asset.json";
+import resultOneAfter from "@/assets/before-after/new-face-halves/face-result-1-after.webp.asset.json";
+import resultTwoBefore from "@/assets/before-after/new-face-halves/face-result-2-before.webp.asset.json";
+import resultTwoAfter from "@/assets/before-after/new-face-halves/face-result-2-after.webp.asset.json";
+import resultThreeBefore from "@/assets/before-after/new-face-halves/face-result-3-before.webp.asset.json";
+import resultThreeAfter from "@/assets/before-after/new-face-halves/face-result-3-after.webp.asset.json";
+import resultFourBefore from "@/assets/before-after/new-face-halves/face-result-4-before.webp.asset.json";
+import resultFourAfter from "@/assets/before-after/new-face-halves/face-result-4-after.webp.asset.json";
+import resultFiveBefore from "@/assets/before-after/new-face-halves/face-result-5-before.webp.asset.json";
+import resultFiveAfter from "@/assets/before-after/new-face-halves/face-result-5-after.webp.asset.json";
+import resultSixBefore from "@/assets/before-after/new-face-halves/face-result-6-before.webp.asset.json";
+import resultSixAfter from "@/assets/before-after/new-face-halves/face-result-6-after.webp.asset.json";
 
 const defaultResults = [
-  { id: 3, composite: resultOne.url, label: "Facial Lifting", name: "Maria", age: 61 },
-  { id: 4, composite: resultTwo.url, label: "Skin Rejuvenation", name: "Jennifer", age: 55 },
-  { id: 5, composite: resultThree.url, label: "Pigmentation", name: "Laura", age: 58 },
-  { id: 6, composite: resultFour.url, label: "Skin Tightening", name: "Rachel", age: 68 },
-  { id: 7, composite: resultFive.url, label: "Neck Rejuvenation", name: "Diana", age: 58 },
-  { id: 11, composite: resultSix.url, label: "Skin Rejuvenation", name: "Catherine", age: 54 },
+  { id: 3, before: resultOneBefore.url, after: resultOneAfter.url, label: "Facial Lifting", name: "Maria", age: 61 },
+  { id: 4, before: resultTwoBefore.url, after: resultTwoAfter.url, label: "Skin Rejuvenation", name: "Jennifer", age: 55 },
+  { id: 5, before: resultThreeBefore.url, after: resultThreeAfter.url, label: "Pigmentation", name: "Laura", age: 58 },
+  { id: 6, before: resultFourBefore.url, after: resultFourAfter.url, label: "Skin Tightening", name: "Rachel", age: 68 },
+  { id: 7, before: resultFiveBefore.url, after: resultFiveAfter.url, label: "Neck Rejuvenation", name: "Diana", age: 58 },
+  { id: 11, before: resultSixBefore.url, after: resultSixAfter.url, label: "Skin Rejuvenation", name: "Catherine", age: 54 },
   { id: 12, before: faceMargaretBefore.url, after: faceMargaretAfter.url, label: "Facial Lifting", name: "Margaret", age: 57 },
   
   { id: 14, before: faceBriannaBefore.url, after: faceBriannaAfter.url, label: "Skin Tightening", name: "Brianna", age: 34 },
