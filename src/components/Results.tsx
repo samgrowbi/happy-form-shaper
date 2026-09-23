@@ -4,8 +4,6 @@ import Autoplay from "embla-carousel-autoplay";
 import { BeforeAfterCard } from "./BeforeAfterCard";
 import { useTreatment } from "@/context/TreatmentContext";
 import { AccentWord } from "./ui/AccentWord";
-import faceCatherineBefore from "@/assets/before-after/face_catherine_before.webp.asset.json";
-import faceCatherineAfter from "@/assets/before-after/face_catherine_after.webp.asset.json";
 import faceMargaretBefore from "@/assets/before-after/face_margaret_before.webp.asset.json";
 import faceMargaretAfter from "@/assets/before-after/face_margaret_after.webp.asset.json";
 import faceBriannaBefore from "@/assets/before-after/face_brianna_before.webp.asset.json";
@@ -22,25 +20,26 @@ import a11Before from "@/assets/before-after/a11-before.jpg.asset.json";
 import a11After from "@/assets/before-after/a11-after.jpg.asset.json";
 import a12Before from "@/assets/before-after/a12-before.jpeg.asset.json";
 import a12After from "@/assets/before-after/a12-after.jpeg.asset.json";
-import a3Before from "@/assets/before-after/a3-before.png.asset.json";
-import a3After from "@/assets/before-after/a3-after.png.asset.json";
-import a4Before from "@/assets/before-after/a4-before.png.asset.json";
-import a4After from "@/assets/before-after/a4-after.png.asset.json";
-import a5Before from "@/assets/before-after/a5-before.png.asset.json";
-import a5After from "@/assets/before-after/a5-after.png.asset.json";
-import a6Before from "@/assets/before-after/a6-before.png.asset.json";
-import a6After from "@/assets/before-after/a6-after.png.asset.json";
-import a7Before from "@/assets/before-after/a7-before.png.asset.json";
-import a7After from "@/assets/before-after/a7-after.png.asset.json";
+import resultOneBefore from "@/assets/before-after/new-face-halves/face-result-1-before.webp.asset.json";
+import resultOneAfter from "@/assets/before-after/new-face-halves/face-result-1-after.webp.asset.json";
+import resultTwoBefore from "@/assets/before-after/new-face-halves/face-result-2-before.webp.asset.json";
+import resultTwoAfter from "@/assets/before-after/new-face-halves/face-result-2-after.webp.asset.json";
+import resultThreeBefore from "@/assets/before-after/new-face-halves/face-result-3-before.webp.asset.json";
+import resultThreeAfter from "@/assets/before-after/new-face-halves/face-result-3-after.webp.asset.json";
+import resultFourBefore from "@/assets/before-after/new-face-halves/face-result-4-before.webp.asset.json";
+import resultFourAfter from "@/assets/before-after/new-face-halves/face-result-4-after.webp.asset.json";
+import resultFiveBefore from "@/assets/before-after/new-face-halves/face-result-5-before.webp.asset.json";
+import resultFiveAfter from "@/assets/before-after/new-face-halves/face-result-5-after.webp.asset.json";
+import resultSixBefore from "@/assets/before-after/new-face-halves/face-result-6-before.webp.asset.json";
+import resultSixAfter from "@/assets/before-after/new-face-halves/face-result-6-after.webp.asset.json";
 
 const defaultResults = [
-  { id: 3, before: a3Before.url, after: a3After.url, label: "Facial Lifting", name: "Maria", age: 61 },
-  { id: 4, before: a4Before.url, after: a4After.url, label: "Skin Rejuvenation", name: "Jennifer", age: 55 },
-  { id: 5, before: a5After.url, after: a5Before.url, label: "Pigmentation", name: "Laura", age: 58 },
-  { id: 6, before: a6After.url, after: a6Before.url, label: "Skin Tightening", name: "Rachel", age: 68 },
-  { id: 7, before: a7Before.url, after: a7After.url, label: "Neck Rejuvenation", name: "Diana", age: 58 },
-
-  { id: 11, before: faceCatherineBefore.url, after: faceCatherineAfter.url, label: "Skin Rejuvenation", name: "Catherine", age: 54 },
+  { id: 3, before: resultOneBefore.url, after: resultOneAfter.url, label: "Facial Lifting", name: "Maria", age: 61 },
+  { id: 4, before: resultTwoBefore.url, after: resultTwoAfter.url, label: "Skin Rejuvenation", name: "Jennifer", age: 55 },
+  { id: 5, before: resultThreeBefore.url, after: resultThreeAfter.url, label: "Pigmentation", name: "Laura", age: 58 },
+  { id: 6, before: resultFourBefore.url, after: resultFourAfter.url, label: "Skin Tightening", name: "Rachel", age: 68 },
+  { id: 7, before: resultFiveBefore.url, after: resultFiveAfter.url, label: "Neck Rejuvenation", name: "Diana", age: 58 },
+  { id: 11, before: resultSixBefore.url, after: resultSixAfter.url, label: "Skin Rejuvenation", name: "Catherine", age: 54 },
   { id: 12, before: faceMargaretBefore.url, after: faceMargaretAfter.url, label: "Facial Lifting", name: "Margaret", age: 57 },
   
   { id: 14, before: faceBriannaBefore.url, after: faceBriannaAfter.url, label: "Skin Tightening", name: "Brianna", age: 34 },
@@ -59,7 +58,6 @@ export function Results() {
   const treatment = useTreatment();
 
   const treatmentResults = treatment.beforeAfterResults;
-  const isComposite = treatmentResults?.some(r => r.composite);
   const results = treatmentResults || defaultResults;
 
   useEffect(() => {
@@ -118,14 +116,15 @@ export function Results() {
             <CarouselContent className="-ml-6">
               {results.map((item) => (
                 <CarouselItem key={item.id} className="basis-[85%] md:basis-1/2 pl-6">
-                  {isComposite && 'composite' in item && item.composite ? (
+                  {'composite' in item && item.composite ? (
                     <div className="group" dir="ltr">
                       <div className="relative w-full overflow-hidden rounded-2xl shadow-lg bg-white transition-all duration-500 ease-out group-hover:shadow-2xl group-hover:-translate-y-1">
                         <div className="w-full aspect-[4/3] lg:aspect-[3/2] overflow-hidden bg-gray-100">
                           <img
                             src={item.composite}
-                            alt={item.label}
+                            alt={`${item.label} before and after treatment result${'name' in item && item.name ? ` for ${item.name}` : ""}`}
                             loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
                           />
                         </div>

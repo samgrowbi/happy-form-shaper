@@ -43,8 +43,9 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, classNa
                     ) : (
                       <img
                           src={beforeImg}
-                          alt="Before Treatment"
+                           alt={`${label} before treatment result${name ? ` for ${name}` : ""}`}
                           loading="lazy"
+                           decoding="async"
                           className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
                           onError={() => setBeforeError(true)}
                       />
@@ -57,16 +58,17 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, classNa
                     ) : (
                       <img
                           src={afterImg}
-                          alt="After Treatment"
+                           alt={`${label} after treatment result${name ? ` for ${name}` : ""}`}
                           loading="lazy"
+                           decoding="async"
                           className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
                           onError={() => setAfterError(true)}
                       />
                     )}
-                    {/* After 3 Sessions tag */}
+                    {/* After 2 Sessions tag */}
                     {!showAfterFallback && (
                       <span className="absolute top-2 right-2 lg:top-3 lg:right-3 px-2 py-0.5 lg:px-2.5 lg:py-1 text-[10px] lg:text-xs font-semibold uppercase tracking-wide bg-white/95 text-blue-600 rounded shadow-sm">
-                        After 3 Sessions
+                        After 2 Sessions
                       </span>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
