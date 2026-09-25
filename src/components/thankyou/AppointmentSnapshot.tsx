@@ -3,6 +3,7 @@ import { formatInTimeZone } from "date-fns-tz";
 import { DEFAULT_ACUITY_TIMEZONE } from "@/config/acuity";
 import {
   BUSINESS_ADDRESS_SINGLELINE,
+  BUSINESS_LOCATION_NOTE,
   BUSINESS_PHONE_DISPLAY,
   BUSINESS_PHONE_TEL,
 } from "@/config/brand";

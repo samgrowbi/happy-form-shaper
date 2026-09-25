@@ -3,6 +3,7 @@ import { MapPin, Phone } from "lucide-react";
 import { motion } from "motion/react";
 import {
   BUSINESS_ADDRESS_LINES,
+  BUSINESS_LOCATION_NOTE,
   BUSINESS_PHONE_DISPLAY,
   BUSINESS_PHONE_TEL,
   GOOGLE_MAPS_LINK,
