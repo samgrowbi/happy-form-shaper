@@ -3,6 +3,7 @@ import { formatInTimeZone } from "date-fns-tz";
 import { DEFAULT_ACUITY_TIMEZONE } from "@/config/acuity";
 import {
   BUSINESS_ADDRESS_SINGLELINE,
+  BUSINESS_LOCATION_NOTE,
   BUSINESS_PHONE_DISPLAY,
   BUSINESS_PHONE_TEL,
 } from "@/config/brand";
@@ -99,6 +100,7 @@ export function AppointmentSnapshot({
                 <div>
                   <p className="text-sm text-muted-foreground">Location</p>
                   <p className="font-medium text-foreground">{location || BUSINESS_ADDRESS_SINGLELINE}</p>
+                  <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{BUSINESS_LOCATION_NOTE}</p>
                 </div>
               </div>
 

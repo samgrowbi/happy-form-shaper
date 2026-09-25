@@ -9,6 +9,9 @@ export const BUSINESS_ADDRESS_LINES = [
   "Pearland, TX 77581, USA",
 ];
 export const BUSINESS_ADDRESS_SINGLELINE = "6516 Broadway St, Pearland, TX 77581, USA";
+// Directional note shown as subtext directly under the address.
+export const BUSINESS_LOCATION_NOTE =
+  "We're located in West Oaks Centre, next to DaVita Kidney Care, Suite 132.";
 
 export const BUSINESS_PHONE_DISPLAY = "+1 (346) 598-5703";
 export const BUSINESS_PHONE_TEL = "+13465985703";

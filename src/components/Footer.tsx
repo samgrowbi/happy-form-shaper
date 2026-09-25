@@ -4,6 +4,7 @@ import {
   BRAND_NAME,
   BRAND_TAGLINE,
   BUSINESS_ADDRESS_LINES,
+  BUSINESS_LOCATION_NOTE,
   BUSINESS_PHONE_DISPLAY,
   BUSINESS_PHONE_TEL,
   BUSINESS_EMAIL,
@@ -106,6 +107,9 @@ export function Footer() {
                         {i < BUSINESS_ADDRESS_LINES.length - 1 && <br />}
                       </span>
                     ))}
+                    <span className="block text-gray-500 text-sm lg:text-base xl:text-lg mt-2 leading-relaxed">
+                      {BUSINESS_LOCATION_NOTE}
+                    </span>
                   </span>
                 </a>
               </li>

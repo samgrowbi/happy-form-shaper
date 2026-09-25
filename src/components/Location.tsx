@@ -3,6 +3,7 @@ import { MapPin, Phone } from "lucide-react";
 import { motion } from "motion/react";
 import {
   BUSINESS_ADDRESS_LINES,
+  BUSINESS_LOCATION_NOTE,
   BUSINESS_PHONE_DISPLAY,
   BUSINESS_PHONE_TEL,
   GOOGLE_MAPS_LINK,
@@ -41,6 +42,9 @@ export function Location() {
                                 {i < BUSINESS_ADDRESS_LINES.length - 1 && <br />}
                               </span>
                             ))}
+                        </p>
+                        <p className="text-gray-500 text-xs lg:text-base xl:text-lg mt-2 leading-relaxed">
+                            {BUSINESS_LOCATION_NOTE}
                         </p>
                     </div>
                 </div>

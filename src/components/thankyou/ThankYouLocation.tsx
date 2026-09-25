@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 import {
   BUSINESS_ADDRESS_LINES,
+  BUSINESS_LOCATION_NOTE,
   BUSINESS_PHONE_DISPLAY,
   BUSINESS_PHONE_TEL,
   GOOGLE_MAPS_LINK,
@@ -42,6 +43,9 @@ export function ThankYouLocation() {
                         {i < BUSINESS_ADDRESS_LINES.length - 1 && <br />}
                       </span>
                     ))}
+                  </p>
+                  <p className="text-gray-500 text-sm mt-1.5 leading-relaxed">
+                    {BUSINESS_LOCATION_NOTE}
                   </p>
                 </div>
               </div>
