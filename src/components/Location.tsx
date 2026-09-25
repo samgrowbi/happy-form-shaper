@@ -43,6 +43,9 @@ export function Location() {
                               </span>
                             ))}
                         </p>
+                        <p className="text-gray-500 text-xs lg:text-base xl:text-lg mt-2 leading-relaxed">
+                            {BUSINESS_LOCATION_NOTE}
+                        </p>
                     </div>
                 </div>
 

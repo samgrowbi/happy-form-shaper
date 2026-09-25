@@ -44,6 +44,9 @@ export function ThankYouLocation() {
                       </span>
                     ))}
                   </p>
+                  <p className="text-gray-500 text-sm mt-1.5 leading-relaxed">
+                    {BUSINESS_LOCATION_NOTE}
+                  </p>
                 </div>
               </div>
 
