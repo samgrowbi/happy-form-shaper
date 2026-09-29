@@ -1,0 +1,1 @@
+- Facial before/after entries use the shared Results carousel's five CDN-backed split pairs; Body/EMS entries come from treatment-specific data so facial presentation changes must be scoped by result type to protect body comparisons.
