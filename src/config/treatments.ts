@@ -608,5 +608,5 @@ export const LED_PAGE_TREATMENT: TreatmentConfig = {
 export const LED_V1_TREATMENT: TreatmentConfig = {
   ...LED_TREATMENT,
   slug: "ledv1",
-  appointmentTypeId: "97649435",
+  appointmentTypeId: "98867400",
 };
