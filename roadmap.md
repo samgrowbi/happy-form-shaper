@@ -1,5 +1,5 @@
 - [x] Show only the five supplied facial comparison pairs in the specified order and names, leaving Body/EMS images unchanged.
 - [x] Center and verify face framing at desktop, tablet, and mobile sizes.
 - [x] Remove facial result badges and trust text without altering Body/EMS, then verify navigation and images.
-- [ ] Remove EMS carousel entries whose source files are missing from storage, preserving the eight working photos.
-- [ ] Verify every EMS carousel photo loads in the preview.
+- [x] Remove EMS carousel entries whose source files are missing from storage, preserving the eight working photos.
+- [x] Verify every EMS carousel photo loads in the preview.
