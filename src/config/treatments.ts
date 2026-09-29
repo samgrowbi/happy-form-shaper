@@ -7,23 +7,6 @@ import bodyConsultationImg from "@/assets/body-consultation.webp";
 import bodyPreparationImg from "@/assets/body-preparation.webp";
 import bodySessionImg from "@/assets/body-session.webp";
 import bodyPostTreatmentImg from "@/assets/body-post-treatment.webp";
-import bodyHeather from "@/assets/before-after/body_heather.webp.asset.json";
-import bodyChloe from "@/assets/before-after/body_chloe.webp.asset.json";
-import bodyDaniela from "@/assets/before-after/body_daniela.webp.asset.json";
-import bodyEmily from "@/assets/before-after/body_emily.webp.asset.json";
-import bodyTatiana from "@/assets/before-after/body_tatiana.webp.asset.json";
-
-export interface BeforeAfterResult {
-  id: number;
-  /** For split before/after cards */
-  before?: string;
-  after?: string;
-  /** For composite images that already contain before+after */
-  composite?: string;
-  label: string;
-  name?: string;
-  age?: number;
-}
 
 export interface TreatmentConfig {
   /** URL slug, e.g. "led" or "led-cryo" */
@@ -60,8 +43,6 @@ export interface TreatmentConfig {
   hideDeviceImage?: boolean;
   /** FAQ entries */
   faqs: { question: string; answer: string }[];
-  /** Before/after results – if provided, overrides the default facial results */
-  beforeAfterResults?: BeforeAfterResult[];
   /** Video testimonials – if provided, overrides the default feedback videos */
   feedbackTestimonials?: { id: number; name: string; video: string; poster?: string; text: string }[];
   /** Visit steps – if provided, overrides default steps */
@@ -343,21 +324,6 @@ export const BODY_SCULPTING_TREATMENT: TreatmentConfig = {
       answer:
         "No special preparation is needed. Simply wear comfortable clothing and stay hydrated. Avoid heavy meals right before your appointment.",
     },
-  ],
-  beforeAfterResults: [
-    { id: 1, composite: "https://cdn.prod.website-files.com/675c3e115f240194d06e370c/681a05d900b60e1b475557b9_BA1.jpeg", label: "Body Contouring" },
-    { id: 2, composite: "https://cdn.prod.website-files.com/675c3e115f240194d06e370c/681a05e7c400512d0c4317f6_BA2.jpeg", label: "Fat Reduction" },
-    { id: 3, composite: "https://cdn.prod.website-files.com/675c3e115f240194d06e370c/681a0606853ecaa0e283d832_BA3.jpeg", label: "Cellulite Treatment" },
-    { id: 4, composite: "https://cdn.prod.website-files.com/675c3e115f240194d06e370c/681a0616e6fa1365e1af68ab_BA4.jpeg", label: "Muscle Toning" },
-    { id: 5, composite: "https://cdn.prod.website-files.com/675c3e115f240194d06e370c/681a062594fb46324cd230ca_BA5.jpeg", label: "Skin Tightening" },
-    { id: 6, composite: "https://cdn.prod.website-files.com/675c3e115f240194d06e370c/681a0638054f50fa0260bf63_BA6.jpeg", label: "Body Cavitation" },
-    { id: 7, composite: "https://cdn.prod.website-files.com/675c3e115f240194d06e370c/681a0654a660916951396e18_BA7.png", label: "Abdomen Contouring" },
-    { id: 8, composite: "https://cdn.prod.website-files.com/675c3e115f240194d06e370c/681a06666983359c983c5dd3_BA8.png", label: "Full Body Transformation" },
-    { id: 9, composite: bodyHeather.url, label: "Body Cavitation", name: "Heather", age: 48 },
-    { id: 10, composite: bodyChloe.url, label: "Body Contouring", name: "Chloe", age: 32 },
-    { id: 11, composite: bodyDaniela.url, label: "Fat Reduction", name: "Daniela", age: 29 },
-    { id: 12, composite: bodyEmily.url, label: "Muscle Toning", name: "Emily", age: 35 },
-    { id: 13, composite: bodyTatiana.url, label: "Skin Tightening", name: "Tatiana", age: 41 },
   ],
   feedbackTestimonials: [
     { id: 1, name: "Michelle", video: "https://customer-vgdtdepv6dn1f10z.cloudflarestream.com/db126ce70e683df185bbd4ed52b68d87/manifest/video.m3u8", poster: "https://customer-vgdtdepv6dn1f10z.cloudflarestream.com/db126ce70e683df185bbd4ed52b68d87/thumbnails/thumbnail.jpg?time=1s&height=800", text: "Amazing body cavitation results!" },
