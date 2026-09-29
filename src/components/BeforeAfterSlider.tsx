@@ -60,7 +60,7 @@ export function BeforeAfterSlider({ beforeImg, afterImg, className, objectPositi
 
       {/* Labels */}
       <span className="absolute top-3 left-3 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide bg-white/90 text-gray-700 rounded">Before</span>
-      <span className="absolute top-3 right-3 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide bg-blue-500 text-white rounded">{showBadge ? "After 2 Sessions" : "After"}</span>
+      {showBadge && <span className="absolute top-3 right-3 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide bg-blue-500 text-white rounded">After 2 Sessions</span>}
 
       {/* Slider line */}
       <div
