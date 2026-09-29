@@ -46,7 +46,7 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, classNa
                     ) : (
                       <img
                           src={beforeImg}
-                            alt={fullPortrait && name ? `Before and after treatment result – ${name}, ${age}` : `${label} before treatment result${name ? ` for ${name}` : ""}`}
+                            alt={fullPortrait && name ? `Before and after treatment result - ${name}, ${age}` : `${label} before treatment result${name ? ` for ${name}` : ""}`}
                           loading="lazy"
                            decoding="async"
                           className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
@@ -62,7 +62,7 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, classNa
                     ) : (
                       <img
                           src={afterImg}
-                            alt={fullPortrait && name ? `Before and after treatment result – ${name}, ${age}` : `${label} after treatment result${name ? ` for ${name}` : ""}`}
+                            alt={fullPortrait && name ? `Before and after treatment result - ${name}, ${age}` : `${label} after treatment result${name ? ` for ${name}` : ""}`}
                           loading="lazy"
                            decoding="async"
                           className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"

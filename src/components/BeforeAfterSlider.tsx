@@ -45,7 +45,7 @@ export function BeforeAfterSlider({ beforeImg, afterImg, className, objectPositi
   return (
     <div
       ref={containerRef}
-      className={cn("relative w-full overflow-hidden select-none rounded-lg bg-gray-100 touch-none", fullPortrait ? "aspect-[2/5] max-h-[75vh] max-w-[30vh] mx-auto" : "aspect-[4/3]", className)}
+      className={cn("relative w-full overflow-hidden select-none rounded-lg bg-gray-100 touch-none", fullPortrait ? "aspect-[4/5] max-h-[75vh]" : "aspect-[4/3]", className)}
       onMouseDown={(e) => { setIsDragging(true); updateFromClientX(e.clientX); }}
       onTouchStart={(e) => { setIsDragging(true); updateFromClientX(e.touches[0].clientX); }}
       dir="ltr"

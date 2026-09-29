@@ -129,7 +129,6 @@ export function Results() {
                       name={'name' in item ? (item as any).name : undefined}
                       age={'age' in item ? (item as any).age : undefined}
                       objectPosition={'objectPosition' in item ? item.objectPosition : undefined}
-                      fullPortrait={isFacial}
                       showBadge={!isFacial}
                     />
                   )}
