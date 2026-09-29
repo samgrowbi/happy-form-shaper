@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "./ui/dialog";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
+import { Button } from "./ui/button";
 
 interface BeforeAfterCardProps {
   beforeImg: string;
@@ -9,10 +10,11 @@ interface BeforeAfterCardProps {
   label: string;
   name?: string;
   age?: number;
+  objectPosition?: string;
   className?: string;
 }
 
-export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, className }: BeforeAfterCardProps) {
+export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, objectPosition = "center center", className }: BeforeAfterCardProps) {
   const [beforeError, setBeforeError] = useState(false);
   const [afterError, setAfterError] = useState(false);
   const [open, setOpen] = useState(false);
@@ -30,23 +32,24 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, classNa
   return (
     <>
     <div className={cn("group", className)} dir="ltr">
-        <button
+        <Button
           type="button"
           onClick={() => canOpen && setOpen(true)}
           aria-label={`Open before and after slider: ${label}`}
           className="relative w-full overflow-hidden rounded-2xl shadow-lg bg-white transition-all duration-500 ease-out group-hover:shadow-2xl group-hover:-translate-y-1 cursor-pointer text-left block"
         >
-            <div className="flex w-full aspect-[4/3] lg:aspect-[3/2]">
+             <div className="flex w-full aspect-[4/5]">
                 <div className="relative w-1/2 h-full overflow-hidden border-r border-white/20 bg-gray-100">
                     {showBeforeFallback ? (
                       <FallbackPlaceholder />
                     ) : (
                       <img
                           src={beforeImg}
-                           alt={`${label} before treatment result${name ? ` for ${name}` : ""}`}
+                           alt={`Before and after treatment result - ${name}, ${age}`}
                           loading="lazy"
                            decoding="async"
                           className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
+                           style={{ objectPosition }}
                           onError={() => setBeforeError(true)}
                       />
                     )}
@@ -58,18 +61,13 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, classNa
                     ) : (
                       <img
                           src={afterImg}
-                           alt={`${label} after treatment result${name ? ` for ${name}` : ""}`}
+                           alt={`Before and after treatment result - ${name}, ${age}`}
                           loading="lazy"
                            decoding="async"
                           className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
+                           style={{ objectPosition }}
                           onError={() => setAfterError(true)}
                       />
-                    )}
-                    {/* After 2 Sessions tag */}
-                    {!showAfterFallback && (
-                      <span className="absolute top-2 right-2 lg:top-3 lg:right-3 px-2 py-0.5 lg:px-2.5 lg:py-1 text-[10px] lg:text-xs font-semibold uppercase tracking-wide bg-white/95 text-blue-600 rounded shadow-sm">
-                        After 2 Sessions
-                      </span>
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>
@@ -90,13 +88,13 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, classNa
                     After
                 </div>
             </div>
-        </button>
+        </Button>
     </div>
 
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="max-w-4xl p-0 bg-white overflow-hidden">
         <DialogTitle className="sr-only">{label} - Before and After Comparison</DialogTitle>
-        {canOpen && <BeforeAfterSlider beforeImg={beforeImg} afterImg={afterImg} />}
+        {canOpen && <BeforeAfterSlider beforeImg={beforeImg} afterImg={afterImg} objectPosition={objectPosition} />}
         <div className="px-4 py-3 text-center">
           <p className="text-sm text-gray-600">
             <span className="font-medium text-gray-900">{label}</span>
