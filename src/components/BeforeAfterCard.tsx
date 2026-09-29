@@ -92,7 +92,7 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, objectP
     </div>
 
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="max-w-4xl p-0 bg-white overflow-hidden">
+      <DialogContent className="w-[min(90vw,32vh)] max-w-none p-0 bg-white overflow-hidden">
         <DialogTitle className="sr-only">{label} - Before and After Comparison</DialogTitle>
         {canOpen && <BeforeAfterSlider beforeImg={beforeImg} afterImg={afterImg} objectPosition={objectPosition} />}
         <div className="px-4 py-3 text-center">
