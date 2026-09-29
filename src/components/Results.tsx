@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "./ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { BeforeAfterCard } from "./BeforeAfterCard";
+import { useTreatment } from "@/context/TreatmentContext";
 import { AccentWord } from "./ui/AccentWord";
 import face1Before from "@/assets/before-after/new-face-halves/face-result-1-before.webp.asset.json";
 import face1After from "@/assets/before-after/new-face-halves/face-result-1-after.webp.asset.json";
@@ -14,7 +15,7 @@ import face4After from "@/assets/before-after/new-face-halves/face-result-4-afte
 import face5Before from "@/assets/before-after/new-face-halves/face-result-5-before.webp.asset.json";
 import face5After from "@/assets/before-after/new-face-halves/face-result-5-after.webp.asset.json";
 
-const results = [
+const defaultResults = [
   { id: 1, before: face1Before.url, after: face1After.url, label: "Facial Lifting", name: "Catherine", age: 38, objectPosition: "center center" },
   { id: 2, before: face2Before.url, after: face2After.url, label: "Facial Lifting", name: "Margaret", age: 41, objectPosition: "center center" },
   { id: 3, before: face3Before.url, after: face3After.url, label: "Facial Lifting", name: "Elaine", age: 62, objectPosition: "center center" },
@@ -24,6 +25,8 @@ const results = [
 
 
 export function Results() {
+  const treatment = useTreatment();
+  const results = treatment.beforeAfterResults || defaultResults;
   const [api, setApi] = useState<CarouselApi>();
   const [currentIndex, setCurrentIndex] = useState(0);
 
