@@ -4,31 +4,34 @@ import Autoplay from "embla-carousel-autoplay";
 import { BeforeAfterCard } from "./BeforeAfterCard";
 import { useTreatment } from "@/context/TreatmentContext";
 import { AccentWord } from "./ui/AccentWord";
-import face1Before from "@/assets/before-after/new-face-halves/face-result-1-before.webp.asset.json";
-import face1After from "@/assets/before-after/new-face-halves/face-result-1-after.webp.asset.json";
-import face2Before from "@/assets/before-after/new-face-halves/face-result-2-before.webp.asset.json";
-import face2After from "@/assets/before-after/new-face-halves/face-result-2-after.webp.asset.json";
-import face3Before from "@/assets/before-after/new-face-halves/face-result-3-before.webp.asset.json";
-import face3After from "@/assets/before-after/new-face-halves/face-result-3-after.webp.asset.json";
-import face4Before from "@/assets/before-after/new-face-halves/face-result-4-before.webp.asset.json";
-import face4After from "@/assets/before-after/new-face-halves/face-result-4-after.webp.asset.json";
-import face5Before from "@/assets/before-after/new-face-halves/face-result-5-before.webp.asset.json";
-import face5After from "@/assets/before-after/new-face-halves/face-result-5-after.webp.asset.json";
+import faceResultOneBefore from "@/assets/before-after/new-face-halves/face-result-1-before.webp.asset.json";
+import faceResultOneAfter from "@/assets/before-after/new-face-halves/face-result-1-after.webp.asset.json";
+import faceMargaretBefore from "@/assets/before-after/face_margaret_before.webp.asset.json";
+import faceMargaretAfter from "@/assets/before-after/face_margaret_after.webp.asset.json";
+import faceBriannaBefore from "@/assets/before-after/face_brianna_before.webp.asset.json";
+import faceBriannaAfter from "@/assets/before-after/face_brianna_after.webp.asset.json";
+import faceVanessaBefore from "@/assets/before-after/face_vanessa_before.webp.asset.json";
+import faceVanessaAfter from "@/assets/before-after/face_vanessa_after.webp.asset.json";
+import faceRosalindBefore from "@/assets/before-after/face_rosalind_before.webp.asset.json";
+import faceRosalindAfter from "@/assets/before-after/face_rosalind_after.webp.asset.json";
 
 const defaultResults = [
-  { id: 1, before: face1Before.url, after: face1After.url, label: "Facial Lifting", name: "Catherine", age: 38, objectPosition: "center center" },
-  { id: 2, before: face2Before.url, after: face2After.url, label: "Facial Lifting", name: "Margaret", age: 41, objectPosition: "center center" },
-  { id: 3, before: face3Before.url, after: face3After.url, label: "Facial Lifting", name: "Elaine", age: 62, objectPosition: "center center" },
-  { id: 4, before: face4Before.url, after: face4After.url, label: "Facial Lifting", name: "Brianna", age: 34, objectPosition: "center center" },
-  { id: 5, before: face5Before.url, after: face5After.url, label: "Facial Lifting", name: "Rosalind", age: 42, objectPosition: "center center" },
+  { id: 1, before: faceResultOneBefore.url, after: faceResultOneAfter.url, label: "Facial Lifting", name: "Maria", age: 61 },
+  { id: 12, before: faceMargaretBefore.url, after: faceMargaretAfter.url, label: "Facial Lifting", name: "Margaret", age: 57 },
+  
+  { id: 14, before: faceBriannaBefore.url, after: faceBriannaAfter.url, label: "Skin Tightening", name: "Brianna", age: 34 },
+  { id: 15, before: faceVanessaBefore.url, after: faceVanessaAfter.url, label: "Skin Rejuvenation", name: "Vanessa", age: 49 },
+  { id: 16, before: faceRosalindBefore.url, after: faceRosalindAfter.url, label: "Neck Rejuvenation", name: "Rosalind", age: 63 },
 ];
 
 
 export function Results() {
-  const treatment = useTreatment();
-  const results = treatment.beforeAfterResults || defaultResults;
   const [api, setApi] = useState<CarouselApi>();
   const [currentIndex, setCurrentIndex] = useState(0);
+  const treatment = useTreatment();
+
+  const treatmentResults = treatment.beforeAfterResults;
+  const results = treatmentResults || defaultResults;
 
   useEffect(() => {
     if (!api) return;
@@ -50,9 +53,18 @@ export function Results() {
 
       <div className="container mx-auto px-5 pt-0 md:pt-0">
         <div className="text-center mb-8 lg:mb-12 space-y-1 lg:space-y-2">
+          <p className="text-[18px] lg:text-base uppercase tracking-[0.2em] text-gray-400 font-bold">No Filters</p>
           <h2 className="hidden sm:block text-4xl lg:text-5xl xl:text-6xl font-serif font-normal text-gray-900 leading-tight">
             <span className="text-gray-900">Real People.</span> <AccentWord>Real Results.</AccentWord>
           </h2>
+          <div className="flex justify-center pt-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 border border-green-200 rounded-full text-xs lg:text-sm font-medium text-green-700">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="text-green-600">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Verified Photos
+            </span>
+          </div>
         </div>
 
         <div className="relative">
@@ -75,25 +87,25 @@ export function Results() {
             className="w-full mx-auto"
           >
             <CarouselContent className="-ml-6">
-              {results.map((item: any) => (
+              {results.map((item) => (
                 <CarouselItem key={item.id} className="basis-[85%] md:basis-1/2 pl-6">
-                  {item.composite ? (
+                  {'composite' in item && item.composite ? (
                     <div className="group" dir="ltr">
                       <div className="relative w-full overflow-hidden rounded-2xl shadow-lg bg-white transition-all duration-500 ease-out group-hover:shadow-2xl group-hover:-translate-y-1">
                         <div className="w-full aspect-[4/3] lg:aspect-[3/2] overflow-hidden bg-gray-100">
                           <img
                             src={item.composite}
-                            alt={`${item.label} before and after treatment result${item.name ? ` for ${item.name}` : ""}`}
+                            alt={`${item.label} before and after treatment result${'name' in item && item.name ? ` for ${item.name}` : ""}`}
                             loading="lazy"
                             decoding="async"
                             className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
                           />
                         </div>
                         <div className="w-full text-center py-2 lg:py-3 bg-white">
-                          {item.name ? (
+                          {('name' in item && (item as any).name) ? (
                             <>
-                              <span className="text-sm lg:text-lg xl:text-xl font-medium text-gray-800">{item.name}</span>
-                              {item.age && <span className="text-sm lg:text-lg xl:text-xl text-gray-500">, {item.age}</span>}
+                              <span className="text-sm lg:text-lg xl:text-xl font-medium text-gray-800">{(item as any).name}</span>
+                              {(item as any).age && <span className="text-sm lg:text-lg xl:text-xl text-gray-500">, {(item as any).age}</span>}
                             </>
                           ) : (
                             <span className="text-sm lg:text-lg xl:text-xl font-medium text-transparent select-none">.</span>
@@ -111,12 +123,11 @@ export function Results() {
                     </div>
                   ) : (
                     <BeforeAfterCard
-                      beforeImg={item.before}
-                      afterImg={item.after}
+                      beforeImg={'before' in item ? item.before || '' : ''}
+                      afterImg={'after' in item ? item.after || '' : ''}
                       label={item.label}
-                      name={item.name}
-                      age={item.age}
-                      objectPosition={item.objectPosition}
+                      name={'name' in item ? (item as any).name : undefined}
+                      age={'age' in item ? (item as any).age : undefined}
                     />
                   )}
                 </CarouselItem>

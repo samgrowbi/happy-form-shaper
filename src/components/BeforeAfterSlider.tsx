@@ -4,11 +4,10 @@ import { cn } from "@/lib/utils";
 interface BeforeAfterSliderProps {
   beforeImg: string;
   afterImg: string;
-  objectPosition?: string;
   className?: string;
 }
 
-export function BeforeAfterSlider({ beforeImg, afterImg, objectPosition = "center center", className }: BeforeAfterSliderProps) {
+export function BeforeAfterSlider({ beforeImg, afterImg, className }: BeforeAfterSliderProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
@@ -43,22 +42,22 @@ export function BeforeAfterSlider({ beforeImg, afterImg, objectPosition = "cente
   return (
     <div
       ref={containerRef}
-      className={cn("relative w-full aspect-[2/5] overflow-hidden select-none rounded-lg bg-gray-100 touch-none", className)}
+      className={cn("relative w-full aspect-[4/3] overflow-hidden select-none rounded-lg bg-gray-100 touch-none", className)}
       onMouseDown={(e) => { setIsDragging(true); updateFromClientX(e.clientX); }}
       onTouchStart={(e) => { setIsDragging(true); updateFromClientX(e.touches[0].clientX); }}
       dir="ltr"
     >
-      <img src={beforeImg} alt="Before" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover pointer-events-none" style={{ objectPosition }} draggable={false} />
+      <img src={beforeImg} alt="Before" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover pointer-events-none" draggable={false} />
       <div
         className="absolute inset-0 overflow-hidden pointer-events-none"
         style={{ clipPath: `inset(0 0 0 ${position}%)` }}
       >
-        <img src={afterImg} alt="After" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition }} draggable={false} />
+        <img src={afterImg} alt="After" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover" draggable={false} />
       </div>
 
       {/* Labels */}
       <span className="absolute top-3 left-3 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide bg-white/90 text-gray-700 rounded">Before</span>
-      <span className="absolute top-3 right-10 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide bg-blue-500 text-white rounded">After</span>
+      <span className="absolute top-3 right-3 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide bg-blue-500 text-white rounded">After 2 Sessions</span>
 
       {/* Slider line */}
       <div

@@ -1,1 +1,0 @@
-Results uses one five-card facial before/after set on every live landing page; keep its data in Results.tsx so carousel ordering and labels stay identical across routes.
