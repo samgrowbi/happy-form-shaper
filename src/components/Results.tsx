@@ -75,16 +75,50 @@ export function Results() {
             className="w-full mx-auto"
           >
             <CarouselContent className="-ml-6">
-              {results.map((item) => (
+              {results.map((item: any) => (
                 <CarouselItem key={item.id} className="basis-[85%] md:basis-1/2 pl-6">
-                  <BeforeAfterCard
-                    beforeImg={item.before}
-                    afterImg={item.after}
-                    label={item.label}
-                    name={item.name}
-                    age={item.age}
-                    objectPosition={item.objectPosition}
-                  />
+                  {item.composite ? (
+                    <div className="group" dir="ltr">
+                      <div className="relative w-full overflow-hidden rounded-2xl shadow-lg bg-white transition-all duration-500 ease-out group-hover:shadow-2xl group-hover:-translate-y-1">
+                        <div className="w-full aspect-[4/3] lg:aspect-[3/2] overflow-hidden bg-gray-100">
+                          <img
+                            src={item.composite}
+                            alt={`${item.label} before and after treatment result${item.name ? ` for ${item.name}` : ""}`}
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105"
+                          />
+                        </div>
+                        <div className="w-full text-center py-2 lg:py-3 bg-white">
+                          {item.name ? (
+                            <>
+                              <span className="text-sm lg:text-lg xl:text-xl font-medium text-gray-800">{item.name}</span>
+                              {item.age && <span className="text-sm lg:text-lg xl:text-xl text-gray-500">, {item.age}</span>}
+                            </>
+                          ) : (
+                            <span className="text-sm lg:text-lg xl:text-xl font-medium text-transparent select-none">.</span>
+                          )}
+                        </div>
+                        <div className="flex w-full text-center text-sm lg:text-base font-medium tracking-wide uppercase">
+                          <div className="w-1/2 py-2.5 lg:py-3.5 bg-gray-100 text-gray-500 border-r border-white transition-colors duration-300 group-hover:bg-gray-200">
+                            Before
+                          </div>
+                          <div className="w-1/2 py-2.5 lg:py-3.5 bg-blue-500 text-white shadow-inner transition-colors duration-300 group-hover:bg-blue-600">
+                            After
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    <BeforeAfterCard
+                      beforeImg={item.before}
+                      afterImg={item.after}
+                      label={item.label}
+                      name={item.name}
+                      age={item.age}
+                      objectPosition={item.objectPosition}
+                    />
+                  )}
                 </CarouselItem>
               ))}
             </CarouselContent>
