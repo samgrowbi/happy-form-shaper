@@ -1,0 +1,3 @@
+- [ ] Show only the five supplied facial comparison pairs in the specified order and names, leaving Body/EMS images unchanged.
+- [ ] Center and verify face framing at desktop, tablet, and mobile sizes.
+- [ ] Remove facial result badges and trust text without altering Body/EMS, then verify navigation and images.

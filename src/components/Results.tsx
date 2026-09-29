@@ -6,22 +6,21 @@ import { useTreatment } from "@/context/TreatmentContext";
 import { AccentWord } from "./ui/AccentWord";
 import faceResultOneBefore from "@/assets/before-after/new-face-halves/face-result-1-before.webp.asset.json";
 import faceResultOneAfter from "@/assets/before-after/new-face-halves/face-result-1-after.webp.asset.json";
-import faceMargaretBefore from "@/assets/before-after/face_margaret_before.webp.asset.json";
-import faceMargaretAfter from "@/assets/before-after/face_margaret_after.webp.asset.json";
-import faceBriannaBefore from "@/assets/before-after/face_brianna_before.webp.asset.json";
-import faceBriannaAfter from "@/assets/before-after/face_brianna_after.webp.asset.json";
-import faceVanessaBefore from "@/assets/before-after/face_vanessa_before.webp.asset.json";
-import faceVanessaAfter from "@/assets/before-after/face_vanessa_after.webp.asset.json";
-import faceRosalindBefore from "@/assets/before-after/face_rosalind_before.webp.asset.json";
-import faceRosalindAfter from "@/assets/before-after/face_rosalind_after.webp.asset.json";
+import faceResultTwoBefore from "@/assets/before-after/new-face-halves/face-result-2-before.webp.asset.json";
+import faceResultTwoAfter from "@/assets/before-after/new-face-halves/face-result-2-after.webp.asset.json";
+import faceResultThreeBefore from "@/assets/before-after/new-face-halves/face-result-3-before.webp.asset.json";
+import faceResultThreeAfter from "@/assets/before-after/new-face-halves/face-result-3-after.webp.asset.json";
+import faceResultFourBefore from "@/assets/before-after/new-face-halves/face-result-4-before.webp.asset.json";
+import faceResultFourAfter from "@/assets/before-after/new-face-halves/face-result-4-after.webp.asset.json";
+import faceResultFiveBefore from "@/assets/before-after/new-face-halves/face-result-5-before.webp.asset.json";
+import faceResultFiveAfter from "@/assets/before-after/new-face-halves/face-result-5-after.webp.asset.json";
 
 const defaultResults = [
-  { id: 1, before: faceResultOneBefore.url, after: faceResultOneAfter.url, label: "Facial Lifting", name: "Maria", age: 61 },
-  { id: 12, before: faceMargaretBefore.url, after: faceMargaretAfter.url, label: "Facial Lifting", name: "Margaret", age: 57 },
-  
-  { id: 14, before: faceBriannaBefore.url, after: faceBriannaAfter.url, label: "Skin Tightening", name: "Brianna", age: 34 },
-  { id: 15, before: faceVanessaBefore.url, after: faceVanessaAfter.url, label: "Skin Rejuvenation", name: "Vanessa", age: 49 },
-  { id: 16, before: faceRosalindBefore.url, after: faceRosalindAfter.url, label: "Neck Rejuvenation", name: "Rosalind", age: 63 },
+  { id: 1, before: faceResultOneBefore.url, after: faceResultOneAfter.url, label: "Facial Lifting", name: "Catherine", age: 38, objectPosition: "center center" },
+  { id: 2, before: faceResultTwoBefore.url, after: faceResultTwoAfter.url, label: "Facial Lifting", name: "Margaret", age: 41, objectPosition: "center center" },
+  { id: 3, before: faceResultThreeBefore.url, after: faceResultThreeAfter.url, label: "Facial Lifting", name: "Elaine", age: 62, objectPosition: "center center" },
+  { id: 4, before: faceResultFourBefore.url, after: faceResultFourAfter.url, label: "Facial Lifting", name: "Brianna", age: 34, objectPosition: "center center" },
+  { id: 5, before: faceResultFiveBefore.url, after: faceResultFiveAfter.url, label: "Facial Lifting", name: "Rosalind", age: 42, objectPosition: "center center" },
 ];
 
 
@@ -32,6 +31,7 @@ export function Results() {
 
   const treatmentResults = treatment.beforeAfterResults;
   const results = treatmentResults || defaultResults;
+  const isFacial = !treatmentResults;
 
   useEffect(() => {
     if (!api) return;
@@ -53,18 +53,18 @@ export function Results() {
 
       <div className="container mx-auto px-5 pt-0 md:pt-0">
         <div className="text-center mb-8 lg:mb-12 space-y-1 lg:space-y-2">
-          <p className="text-[18px] lg:text-base uppercase tracking-[0.2em] text-gray-400 font-bold">No Filters</p>
+          {!isFacial && <p className="text-[18px] lg:text-base uppercase tracking-[0.2em] text-gray-400 font-bold">No Filters</p>}
           <h2 className="hidden sm:block text-4xl lg:text-5xl xl:text-6xl font-serif font-normal text-gray-900 leading-tight">
             <span className="text-gray-900">Real People.</span> <AccentWord>Real Results.</AccentWord>
           </h2>
-          <div className="flex justify-center pt-2">
+          {!isFacial && <div className="flex justify-center pt-2">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 border border-green-200 rounded-full text-xs lg:text-sm font-medium text-green-700">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="text-green-600">
                 <polyline points="20 6 9 17 4 12" />
               </svg>
               Verified Photos
             </span>
-          </div>
+          </div>}
         </div>
 
         <div className="relative">
@@ -128,6 +128,9 @@ export function Results() {
                       label={item.label}
                       name={'name' in item ? (item as any).name : undefined}
                       age={'age' in item ? (item as any).age : undefined}
+                      objectPosition={'objectPosition' in item ? item.objectPosition : undefined}
+                      fullPortrait={isFacial}
+                      showBadge={!isFacial}
                     />
                   )}
                 </CarouselItem>
