@@ -7,11 +7,6 @@ import bodyConsultationImg from "@/assets/body-consultation.webp";
 import bodyPreparationImg from "@/assets/body-preparation.webp";
 import bodySessionImg from "@/assets/body-session.webp";
 import bodyPostTreatmentImg from "@/assets/body-post-treatment.webp";
-import bodyHeather from "@/assets/before-after/body_heather.webp.asset.json";
-import bodyChloe from "@/assets/before-after/body_chloe.webp.asset.json";
-import bodyDaniela from "@/assets/before-after/body_daniela.webp.asset.json";
-import bodyEmily from "@/assets/before-after/body_emily.webp.asset.json";
-import bodyTatiana from "@/assets/before-after/body_tatiana.webp.asset.json";
 
 export interface BeforeAfterResult {
   id: number;
@@ -353,11 +348,6 @@ export const BODY_SCULPTING_TREATMENT: TreatmentConfig = {
     { id: 6, composite: "https://cdn.prod.website-files.com/675c3e115f240194d06e370c/681a0638054f50fa0260bf63_BA6.jpeg", label: "Body Cavitation" },
     { id: 7, composite: "https://cdn.prod.website-files.com/675c3e115f240194d06e370c/681a0654a660916951396e18_BA7.png", label: "Abdomen Contouring" },
     { id: 8, composite: "https://cdn.prod.website-files.com/675c3e115f240194d06e370c/681a06666983359c983c5dd3_BA8.png", label: "Full Body Transformation" },
-    { id: 9, composite: bodyHeather.url, label: "Body Cavitation", name: "Heather", age: 48 },
-    { id: 10, composite: bodyChloe.url, label: "Body Contouring", name: "Chloe", age: 32 },
-    { id: 11, composite: bodyDaniela.url, label: "Fat Reduction", name: "Daniela", age: 29 },
-    { id: 12, composite: bodyEmily.url, label: "Muscle Toning", name: "Emily", age: 35 },
-    { id: 13, composite: bodyTatiana.url, label: "Skin Tightening", name: "Tatiana", age: 41 },
   ],
   feedbackTestimonials: [
     { id: 1, name: "Michelle", video: "https://customer-vgdtdepv6dn1f10z.cloudflarestream.com/db126ce70e683df185bbd4ed52b68d87/manifest/video.m3u8", poster: "https://customer-vgdtdepv6dn1f10z.cloudflarestream.com/db126ce70e683df185bbd4ed52b68d87/thumbnails/thumbnail.jpg?time=1s&height=800", text: "Amazing body cavitation results!" },
