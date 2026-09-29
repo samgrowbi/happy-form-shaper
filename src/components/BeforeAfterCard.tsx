@@ -45,7 +45,7 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, objectP
                     ) : (
                       <img
                           src={beforeImg}
-                           alt={`Before and after treatment result - ${name}, ${age}`}
+                            alt={`Before and after treatment result – ${name}, ${age}`}
                           loading="lazy"
                            decoding="async"
                           className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
@@ -61,7 +61,7 @@ export function BeforeAfterCard({ beforeImg, afterImg, label, name, age, objectP
                     ) : (
                       <img
                           src={afterImg}
-                           alt={`Before and after treatment result - ${name}, ${age}`}
+                            alt={`Before and after treatment result – ${name}, ${age}`}
                           loading="lazy"
                            decoding="async"
                           className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
