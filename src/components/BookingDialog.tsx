@@ -7,6 +7,7 @@ import { BookingCalendar } from "./booking/BookingCalendar";
 import { TimeSlotPicker } from "./booking/TimeSlotPicker";
 import { BookingForm } from "./booking/BookingForm";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { WaitlistPrompt } from "./booking/WaitlistPrompt";
 
 interface BookingDialogProps {
   isOpen: boolean;
@@ -63,6 +64,9 @@ export function BookingDialog({ isOpen, onClose }: BookingDialogProps) {
         </DialogHeader>
 
         <div className="flex-1 min-h-0 overflow-y-auto">
+          {(booking.currentStep === "date" || booking.currentStep === "datetime") && (
+            <WaitlistPrompt treatment={treatment} className="mx-4 mt-4" />
+          )}
           {/* Mobile: Date step */}
           {booking.currentStep === "date" && (
             <BookingCalendar
