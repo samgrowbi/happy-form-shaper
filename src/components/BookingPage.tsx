@@ -9,6 +9,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { TreatmentConfig } from "@/config/treatments";
 import { useEffect } from "react";
 import { BRAND_NAME } from "@/config/brand";
+import { WaitlistPrompt } from "@/components/booking/WaitlistPrompt";
 
 interface BookingPageProps {
   treatment: TreatmentConfig;
@@ -79,6 +80,9 @@ const BookingPage = ({ treatment }: BookingPageProps) => {
       {/* Main Content */}
       <main className="flex-1 container mx-auto px-5 py-6">
         <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-lg shadow-blue-100/50 overflow-hidden">
+          {(booking.currentStep === "date" || booking.currentStep === "datetime") && (
+            <WaitlistPrompt treatment={treatment} className="m-4 mb-0" />
+          )}
           {booking.currentStep === "date" && (
             <BookingCalendar
               selectedDate={booking.selectedDate}
