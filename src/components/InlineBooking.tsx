@@ -8,6 +8,7 @@ import { TimeSlotPicker } from "./booking/TimeSlotPicker";
 import { BookingForm } from "./booking/BookingForm";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useTreatment } from "@/context/TreatmentContext";
+import { WaitlistPrompt } from "./booking/WaitlistPrompt";
 
 export function InlineBooking() {
   const isMobile = useIsMobile();
@@ -78,6 +79,9 @@ export function InlineBooking() {
 
         {/* Content */}
         <div className="min-h-[320px]">
+          {(booking.currentStep === "date" || booking.currentStep === "datetime") && (
+            <WaitlistPrompt treatment={treatment} className="m-3 mb-0 lg:m-4 lg:mb-0" />
+          )}
           {booking.currentStep === "date" && (
             <BookingCalendar
               selectedDate={booking.selectedDate}
